@@ -1,8 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import './raj-delight-final.css';
-import './brand-polish.css';
-import './final-fixes.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://raj-delight-shashanks19102010-hues-projects.vercel.app'),
@@ -25,9 +22,5 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
-    </html>
-  );
+  return <html lang="en" suppressHydrationWarning><body>{children}</body></html>;
 }
