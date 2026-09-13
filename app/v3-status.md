@@ -1,0 +1,1 @@
+V3 root page wiring, complete menu presentation, ordering links, contact, social discovery, visual edge rails, and responsive layout are included in this branch.
