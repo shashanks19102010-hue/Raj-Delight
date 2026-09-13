@@ -7,15 +7,22 @@ A premium, aesthetic and responsive restaurant website for Raj Delight, Chandaus
 - Next.js App Router + TypeScript
 - Responsive mobile-first layout
 - Premium editorial visual system with Cormorant Garamond + Manrope
-- Original RD-inspired vector mark based on the user's supplied reference image; the supplied photo is not used as the website logo
-- Interactive full menu search and category filtering
-- Publicly listed menu names from the current Zomato listing
+- Fresh RD-inspired vector mark based on the user's supplied reference image; the supplied photo is not used as the website logo
+- Standalone brand asset at `public/raj-delight-mark.svg`
+- Premium finishing layer with restrained ornamental edge rails and responsive decorative details
+- Interactive full public menu search and category filtering
+- Full currently visible public Zomato menu dataset, including seasonal/Navratri and drinks sections
 - Zomato and Swiggy ordering links
 - Google Maps directions link
-- Public rating snapshot
+- Public rating snapshot and public listing details
 - Gallery placeholders clearly marked as editorial imagery until original restaurant photography is supplied
-- SEO metadata, robots and sitemap
+- SEO metadata, Open Graph metadata, robots and sitemap
 - GitHub Actions typecheck + production build validation
+
+## Design workspace
+
+Figma brand and website design workspace:
+https://www.figma.com/design/ILFSEpb9nz1Tx7F5dJd9ML
 
 ## Public restaurant details used in the current build
 
