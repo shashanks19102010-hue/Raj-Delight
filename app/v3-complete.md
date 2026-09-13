@@ -1,1 +1,1 @@
-Production candidate for Raj Delight V3.
+# Removed

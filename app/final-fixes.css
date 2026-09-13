@@ -1,0 +1,16 @@
+/* Final QA overrides */
+.rd-smart-image{position:absolute!important;inset:0;width:100%!important;height:100%!important;object-fit:cover}
+html:not([data-theme='dark']){--rd-bg:#fbfaf6;--rd-surface:#f0ebe2;--rd-surface-2:#fffdf9;--rd-ink:#15120f;--rd-muted:#70685e;--rd-line:rgba(21,18,15,.15);--rd-gold:#a97834;--rd-gold-2:#e3c98f;--rd-dark:#15110e;--rd-dark-2:#201a15}
+html[data-theme='dark']{--rd-bg:#0e0c0a;--rd-surface:#18130f;--rd-surface-2:#201a15;--rd-ink:#f8f1e6;--rd-muted:#b2a69a;--rd-line:rgba(248,241,230,.14);--rd-gold:#d3aa65;--rd-gold-2:#f0d99f;--rd-dark:#0b0907;--rd-dark-2:#17120e}
+.rd-final{background:var(--rd-bg)!important;color:var(--rd-ink)!important}
+.rd-category-header{transition:background .22s,border-color .22s,transform .22s}.rd-category-header:hover{background:rgba(200,161,91,.045)}
+.rd-category-items{animation:rdReveal .32s ease both}@keyframes rdReveal{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.rd-gallery-tile,.rd-story-image,.rd-special-media,.rd-seasonal-image{isolation:isolate}
+.rd-gallery-tile::after{z-index:1}.rd-gallery-tile span,.rd-gallery-tile strong{z-index:2}
+.rd-lightbox-media{box-shadow:0 35px 110px rgba(0,0,0,.45)}
+.rd-lightbox-close{transition:transform .2s,background .2s}.rd-lightbox-close:hover{transform:rotate(90deg) scale(1.05);background:rgba(0,0,0,.55)}
+.rd-social-svg{display:block;flex:none}.rd-contact-cta .rd-secondary-btn{min-width:150px}.rd-instagram{gap:9px}
+.rd-mobile-actions{grid-template-columns:repeat(4,1fr)!important}
+.rd-mobile-actions a:nth-child(2){background:var(--rd-gold-2)!important;color:#20180f!important}
+.rd-desktop-order{right:24px;bottom:24px}.rd-desktop-order a{min-height:50px}
+@media(max-width:680px){.rd-container{width:min(100% - 28px,760px)}.rd-nav-wrap{border-bottom-color:var(--rd-line)}.rd-brand-copy strong{font-size:21px}.rd-brand-copy small{font-size:6px}.rd-hero{min-height:740px}.rd-hero-proof{grid-template-columns:1fr 1fr;gap:18px}.rd-order-inner h2{font-size:36px}.rd-order-card{min-height:76px}.rd-story-copy h2,.rd-section h2,.rd-contact-copy h2{font-size:54px}.rd-special-grid{margin-right:-6px;padding-right:6px}.rd-category-header{padding:19px 0}.rd-menu-item span{font-size:16px}.rd-gallery-grid{grid-auto-rows:175px}.rd-footer{padding-bottom:92px}.rd-mobile-actions{left:8px!important;right:8px!important;bottom:8px!important;border-radius:20px!important}.rd-mobile-actions a,.rd-mobile-actions button{min-height:52px!important}}

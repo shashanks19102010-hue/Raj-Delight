@@ -1,1 +1,1 @@
-The production root page is intended to use RestaurantSiteV3. This note exists only as a design handoff marker.
+# Removed
