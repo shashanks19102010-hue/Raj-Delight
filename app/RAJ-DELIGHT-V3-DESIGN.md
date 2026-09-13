@@ -1,1 +1,1 @@
-V3 design direction: premium Indian restaurant editorial layout, warm charcoal/cream/champagne palette, refined monogram, ornamental edge rails, complete menu presentation, direct Zomato/Swiggy ordering, contact and social discovery.
+# Archived
