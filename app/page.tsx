@@ -1,5 +1,5 @@
-import { RestaurantSite } from '@/components/RestaurantSite';
+import { RestaurantSiteV3 } from '@/components/RestaurantSiteV3';
 
-export default function HomePage() {
-  return <RestaurantSite />;
+export default function Page() {
+  return <RestaurantSiteV3 />;
 }
