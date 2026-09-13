@@ -1,5 +1,5 @@
-import { RajDelightFinal } from '@/components/RajDelightFinal';
+import { RajDelightUltra } from '@/components/RajDelightUltra';
 
 export default function Page() {
-  return <RajDelightFinal />;
+  return <RajDelightUltra />;
 }
