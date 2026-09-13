@@ -1,5 +1,5 @@
-import { RestaurantSiteV3 } from '@/components/RestaurantSiteV3';
+import { RajDelightGodLevel } from '@/components/RajDelightGodLevel';
 
 export default function Page() {
-  return <RestaurantSiteV3 />;
+  return <RajDelightGodLevel />;
 }
