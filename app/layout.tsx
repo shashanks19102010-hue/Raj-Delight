@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import './globals.css';
+import './premium-overrides.css';
 
 const displayFont = Cormorant_Garamond({
   subsets: ['latin'],
@@ -17,15 +18,21 @@ const bodyFont = Manrope({
 export const metadata: Metadata = {
   title: 'Raj Delight | Vegetarian Restaurant in Chandausi',
   description:
-    'Raj Delight Restaurant in Chandausi. Explore the menu, find the restaurant, and order online through Zomato or Swiggy.',
+    'Raj Delight Restaurant in Chandausi. Explore the full public menu, find the restaurant, and order online through Zomato or Swiggy.',
   keywords: [
     'Raj Delight',
     'Raj Delight Chandausi',
+    'Raj Delight menu',
     'restaurant in Chandausi',
     'vegetarian restaurant Chandausi',
-    'Raj Delight menu',
+    'food delivery Chandausi',
   ],
   robots: { index: true, follow: true },
+  openGraph: {
+    title: 'Raj Delight | Chandausi',
+    description: 'Explore the menu, discover the dining experience and order online.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
