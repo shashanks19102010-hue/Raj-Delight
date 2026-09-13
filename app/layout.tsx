@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import './raj-delight-final.css';
 import './ux-upgrade.css';
 
 export const metadata: Metadata = {
