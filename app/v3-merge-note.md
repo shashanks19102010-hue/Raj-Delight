@@ -1,0 +1,1 @@
+Raj Delight V3 merge candidate: production page uses RestaurantSiteV3 with complete menu groups, delivery CTAs, contact details, social discovery and premium visual system.
