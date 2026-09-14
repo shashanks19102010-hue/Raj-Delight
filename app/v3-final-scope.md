@@ -1,1 +1,0 @@
-Raj Delight V3 includes a complete menu grouped by public categories, Zomato and Swiggy ordering buttons, WhatsApp and phone contact, Google Maps directions, social discovery links, a refined RD mark, ornamental edge styling, gallery and responsive mobile actions.
