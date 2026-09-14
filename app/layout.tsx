@@ -3,6 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
 import './raj-delight-tweaks.css';
 import './raj-delight-theme-fix.css';
+import './raj-delight-final-polish.css';
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
