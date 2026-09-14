@@ -1,0 +1,279 @@
+/* Raj Delight: resilient theme system. This file intentionally overrides the legacy
+   visual tokens without changing the existing layout direction. */
+
+:root { color-scheme: light; }
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+
+body {
+  background: #f6f1e7;
+  color: #17130f;
+  transition: background-color .35s ease, color .35s ease;
+}
+
+/* Semantic tokens: never swap the meaning of a token between themes. */
+html[data-theme="light"] .RajDelightPremium_site,
+html[data-theme="light"] [class*="RajDelightPremium_site"] {
+  --bg: #f6f1e7 !important;
+  --surface: #fffaf1 !important;
+  --ink: #17130f !important;
+  --muted: #72685c !important;
+  --line: rgba(23,19,15,.14) !important;
+  --gold: #c4a15a !important;
+  --gold2: #e2c384 !important;
+  --ivory: #f6f1e7 !important;
+  --paper: #fffaf1 !important;
+  --espresso: #17130f !important;
+  --dark-line: rgba(23,19,15,.13) !important;
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+}
+
+html[data-theme="dark"] .RajDelightPremium_site,
+html[data-theme="dark"] [class*="RajDelightPremium_site"],
+[class*="RajDelightPremium_site"].dark {
+  --bg: #0e0c0a !important;
+  --surface: #17130f !important;
+  --ink: #f6efe4 !important;
+  --muted: #b3a89b !important;
+  --line: rgba(246,239,228,.12) !important;
+  --gold: #d4ae66 !important;
+  --gold2: #ecd19a !important;
+  --ivory: #0e0c0a !important;
+  --paper: #17130f !important;
+  --espresso: #0e0c0a !important;
+  --dark-line: rgba(246,239,228,.12) !important;
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+}
+
+/* Page surfaces: light is actually light; dark is actually dark. */
+html[data-theme="light"] [class*="RajDelightPremium_story"],
+html[data-theme="light"] [class*="RajDelightPremium_signature"],
+html[data-theme="light"] [class*="RajDelightPremium_season"],
+html[data-theme="light"] [class*="RajDelightPremium_gallery"],
+html[data-theme="light"] [class*="RajDelightPremium_visit"] {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_story"],
+html[data-theme="dark"] [class*="RajDelightPremium_signature"],
+html[data-theme="dark"] [class*="RajDelightPremium_season"],
+html[data-theme="dark"] [class*="RajDelightPremium_gallery"],
+html[data-theme="dark"] [class*="RajDelightPremium_visit"] {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+}
+
+/* The menu itself follows the selected theme rather than relying on a hard-coded
+   espresso value. */
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_menuSection"] {
+  background: var(--bg) !important;
+  color: var(--ink) !important;
+}
+
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_searchBox"],
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_categoryScroller"] button,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapter"] {
+  background-color: rgba(23,19,15,.035) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_searchBox"] input,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_searchBox"] input::placeholder {
+  color: var(--ink) !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuIntro"] > div:first-child > p:last-child,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuCount"] span,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuCount"] small,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuMeta"] {
+  color: var(--muted) !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapterCopy"] strong,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapterCopy"] small,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapterCopy"] em {
+  color: var(--ink) !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_searchBox"],
+html[data-theme="dark"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_categoryScroller"] button,
+html[data-theme="dark"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapter"] {
+  background-color: rgba(255,255,255,.035) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+
+/* Header and theme control. */
+html[data-theme="light"] [class*="RajDelightPremium_nav"] {
+  background: rgba(246,241,231,.92) !important;
+  color: var(--ink) !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_nav"] {
+  background: rgba(14,12,10,.92) !important;
+  color: var(--ink) !important;
+}
+[class*="RajDelightPremium_theme"],
+[class*="RajDelightPremium_mobileTheme"] {
+  transition: transform .35s ease, background .35s ease, border-color .35s ease, color .35s ease !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_theme"] svg,
+html[data-theme="dark"] [class*="RajDelightPremium_mobileTheme"] svg {
+  transform: rotate(180deg);
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+/* Theme-safe typography and rules. */
+html[data-theme="light"] [class*="RajDelightPremium_storyCopy"] h2,
+html[data-theme="light"] [class*="RajDelightPremium_sectionHead"] h2,
+html[data-theme="light"] [class*="RajDelightPremium_menuIntro"] h2,
+html[data-theme="light"] [class*="RajDelightPremium_seasonCopy"] h2,
+html[data-theme="light"] [class*="RajDelightPremium_visit"] h2,
+html[data-theme="light"] [class*="RajDelightPremium_dish"] h3 {
+  color: var(--ink) !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_storyCopy"] h2,
+html[data-theme="dark"] [class*="RajDelightPremium_sectionHead"] h2,
+html[data-theme="dark"] [class*="RajDelightPremium_menuIntro"] h2,
+html[data-theme="dark"] [class*="RajDelightPremium_seasonCopy"] h2,
+html[data-theme="dark"] [class*="RajDelightPremium_visit"] h2,
+html[data-theme="dark"] [class*="RajDelightPremium_dish"] h3 {
+  color: var(--ink) !important;
+}
+
+html[data-theme="light"] [class*="RajDelightPremium_storyCopy"] > p:not([class*="kicker"]),
+html[data-theme="light"] [class*="RajDelightPremium_seasonCopy"] > p:not([class*="kicker"]),
+html[data-theme="light"] [class*="RajDelightPremium_visit"] p {
+  color: var(--muted) !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_storyCopy"] > p:not([class*="kicker"]),
+html[data-theme="dark"] [class*="RajDelightPremium_seasonCopy"] > p:not([class*="kicker"]),
+html[data-theme="dark"] [class*="RajDelightPremium_visit"] p {
+  color: var(--muted) !important;
+}
+
+/* Theme fade is global, not just body. */
+[class*="RajDelightPremium_site"],
+[class*="RajDelightPremium_site"] * {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: .35s;
+  transition-timing-function: ease;
+}
+[class*="RajDelightPremium_hero"],
+[class*="RajDelightPremium_hero"] * {
+  transition-property: none;
+}
+
+/* Motion: restrained, premium, and reversible. */
+[class*="RajDelightPremium_heroMedia"] {
+  animation: rajDelightKenBurns 18s ease-in-out infinite alternate !important;
+  transform-origin: center center;
+  will-change: transform;
+}
+@keyframes rajDelightKenBurns {
+  from { transform: scale(1.04) translate3d(0,0,0); }
+  to { transform: scale(1.12) translate3d(0,-14px,0); }
+}
+
+[class*="RajDelightPremium_heroOrb"] {
+  animation: rajDelightOrbDrift 16s ease-in-out infinite alternate !important;
+}
+@keyframes rajDelightOrbDrift {
+  from { transform: translate3d(0,0,0) rotate(0deg); }
+  to { transform: translate3d(-18px,18px,0) rotate(11deg); }
+}
+
+[class*="RajDelightPremium_section"][data-reveal] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: rajDelightReveal .7s cubic-bezier(.22,1,.36,1) both !important;
+}
+@keyframes rajDelightReveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+[class*="RajDelightPremium_dishImage"] img,
+[class*="RajDelightPremium_chapter"] img,
+[class*="RajDelightPremium_storyImage"] img,
+[class*="RajDelightPremium_seasonImage"] img,
+[class*="RajDelightPremium_galleryLarge"] img,
+[class*="RajDelightPremium_galleryTile"] img {
+  transition: transform .6s ease, filter .45s ease !important;
+}
+[class*="RajDelightPremium_dish"]:hover [class*="RajDelightPremium_dishImage"] img,
+[class*="RajDelightPremium_chapter"]:hover img,
+[class*="RajDelightPremium_storyImage"]:hover img,
+[class*="RajDelightPremium_seasonImage"]:hover img,
+[class*="RajDelightPremium_galleryLarge"]:hover img,
+[class*="RajDelightPremium_galleryTile"]:hover img {
+  transform: scale(1.06);
+}
+
+/* Reliable photography replacements for the known bad source URLs. */
+[class*="RajDelightPremium_dishImage"] img[alt="Tandoori Paneer Tikka"] {
+  content: url("https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1200&q=88") !important;
+}
+[class*="RajDelightPremium_dishImage"] img[alt="Veg Hyderabadi Biryani"] {
+  content: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1200&q=88") !important;
+}
+[class*="RajDelightPremium_heroMedia"] img[alt="Vegetable biryani served at Raj Delight"] {
+  content: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1800&q=88") !important;
+}
+
+/* Known Swiggy hotlinks are replaced by stable Unsplash photography. */
+[class*="RajDelightPremium_chapter"]:has(img[src*="a4d9cea5c4bf70725b3dd7931f0b5a70"]) {
+  background-image: url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1200&q=88") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+[class*="RajDelightPremium_chapter"]:has(img[src*="a4d9cea5c4bf70725b3dd7931f0b5a70"]) img,
+[class*="RajDelightPremium_chapter"]:has(img[src*="be4e0e26fdd3f62ecf8e09f57e77d72e"]) img {
+  opacity: 0 !important;
+}
+[class*="RajDelightPremium_chapter"]:has(img[src*="be4e0e26fdd3f62ecf8e09f57e77d72e"]) {
+  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1200&q=88") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Safe fallback tiles never become black. */
+[class*="RajDelightPremium_imageFallback"] {
+  background-color: #e5dccd !important;
+  background-size: cover !important;
+  background-position: center !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_imageFallback"] {
+  background-color: #211a14 !important;
+}
+
+/* Gold underline micro-interaction for nav links. */
+[class*="RajDelightPremium_links"] button { position: relative; }
+[class*="RajDelightPremium_links"] button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width .25s ease;
+}
+[class*="RajDelightPremium_links"] button:hover::after { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="RajDelightPremium_heroMedia"],
+  [class*="RajDelightPremium_heroOrb"],
+  [class*="RajDelightPremium_section"][data-reveal] {
+    animation: none !important;
+  }
+  [class*="RajDelightPremium_site"],
+  [class*="RajDelightPremium_site"] * { transition-duration: .01ms !important; }
+}
