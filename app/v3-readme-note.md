@@ -1,1 +1,0 @@
-The V3 experience is the intended public page: full public menu grouping, Zomato/Swiggy/WhatsApp ordering, contact details, social discovery, refined logo and ornamental edges.
