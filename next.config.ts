@@ -6,7 +6,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'images.openai.com' },
+      { protocol: 'https', hostname: 'media-assets.swiggy.com' },
+      { protocol: 'https', hostname: 'b.zmtcdn.com' },
+      { protocol: 'https', hostname: 'img3.restaurantguru.com' },
     ],
   },
 };
