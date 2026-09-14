@@ -1,1 +1,0 @@
-V3 root page is wired to RestaurantSiteV3. See branch commit for complete menu presentation, ordering, contact, social discovery, edge ornamentation and responsive styling.
