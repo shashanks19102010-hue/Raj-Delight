@@ -30,7 +30,7 @@ const restaurantSchema = {
 const themeBoot = `
 (function(){
   try{
-    var t = localStorage.getItem('raj-delight-theme-v10') || localStorage.getItem('raj-delight-theme-v9') || localStorage.getItem('raj-delight-theme');
+    var t = localStorage.getItem('raj-delight-theme-v9') || localStorage.getItem('raj-delight-theme-v10') || localStorage.getItem('raj-delight-theme');
     if(t!=='dark'&&t!=='light') t='light';
     document.documentElement.setAttribute('data-theme', t);
     document.documentElement.style.colorScheme = t;
@@ -40,9 +40,7 @@ const themeBoot = `
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${display.variable} ${ui.variable}`}>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
-      </head>
+      <head><script dangerouslySetInnerHTML={{ __html: themeBoot }} /></head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }} />
         {children}
