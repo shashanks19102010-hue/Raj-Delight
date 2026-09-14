@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'img3.restaurantguru.com' },
-      { protocol: 'https', hostname: 'img02.restaurantguru.com' },
-      { protocol: 'https', hostname: 'content.jdmagicbox.com' },
     ],
   },
 };
