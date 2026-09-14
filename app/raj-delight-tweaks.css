@@ -1,6 +1,6 @@
 /* Raj Delight — surgical visual fixes only */
 
-/* Keep the requested CTA typography identical across all three hero actions. */
+/* Keep the three hero CTAs visually identical and premium. */
 [class*="RajDelightPremium_primaryCta"],
 [class*="RajDelightPremium_secondaryCta"],
 [class*="RajDelightPremium_orderToggle"],
@@ -13,55 +13,221 @@
   text-transform: uppercase !important;
 }
 
-/* Prevent sections from ever becoming blank when the page is resumed, restored,
-   or the theme is switched before the scroll-based reveal state runs. */
+/*
+ * THEME FIX
+ * The Premium stylesheet previously inverted --espresso in dark mode.
+ * But --espresso is also used by menu/visit/marquee as a dark surface,
+ * so the inversion produced a light surface with light text and looked blank.
+ * Keep surface tokens semantically stable and change the actual page text/surfaces.
+ */
+html[data-theme="dark"] [class*="RajDelightPremium_site"] {
+  --ivory: #0f0b08 !important;
+  --paper: #17110d !important;
+  --espresso: #0f0b08 !important;
+  --gold: #cfaa63 !important;
+  --gold2: #ecd19a !important;
+  --muted: #b4a79a !important;
+  --line: rgba(247,239,226,.17) !important;
+  --dark-line: rgba(255,245,228,.15) !important;
+  color: #f6efe3 !important;
+  background: #0f0b08 !important;
+}
+
+/* Dark-theme surfaces must stay dark, while copy remains readable. */
+html[data-theme="dark"] [class*="RajDelightPremium_menuSection"],
+html[data-theme="dark"] [class*="RajDelightPremium_visit"],
+html[data-theme="dark"] [class*="RajDelightPremium_marquee"] {
+  background: #0f0b08 !important;
+  color: #f7efe3 !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_story"],
+html[data-theme="dark"] [class*="RajDelightPremium_signature"],
+html[data-theme="dark"] [class*="RajDelightPremium_season"],
+html[data-theme="dark"] [class*="RajDelightPremium_gallery"] {
+  background: #17110d !important;
+  color: #f6efe3 !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_nav"] {
+  background: rgba(15,11,8,.9) !important;
+  color: #f6efe3 !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_navOrder"] {
+  background: #f6efe3 !important;
+  color: #17110d !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_theme"],
+html[data-theme="dark"] [class*="RajDelightPremium_mobileTheme"] {
+  color: #f6efe3 !important;
+  border-color: rgba(247,239,226,.2) !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_textButton"],
+html[data-theme="dark"] [class*="RajDelightPremium_dishLink"],
+html[data-theme="dark"] [class*="RajDelightPremium_galleryMore"] {
+  color: #f6efe3 !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_storyCopy"] > p:not([class*="kicker"]),
+html[data-theme="dark"] [class*="RajDelightPremium_seasonCopy"] > p:not([class*="kicker"]),
+html[data-theme="dark"] [class*="RajDelightPremium_visit"] p {
+  color: #b4a79a !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_menuIntro"] > div:first-child > p:last-child,
+html[data-theme="dark"] [class*="RajDelightPremium_menuCount"] span,
+html[data-theme="dark"] [class*="RajDelightPremium_menuCount"] small,
+html[data-theme="dark"] [class*="RajDelightPremium_menuMeta"] {
+  color: rgba(247,239,227,.58) !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_categoryScroller"] button {
+  color: rgba(247,239,227,.7) !important;
+  border-color: rgba(255,245,228,.16) !important;
+}
+
+html[data-theme="dark"] [class*="RajDelightPremium_searchBox"] {
+  border-color: rgba(255,245,228,.16) !important;
+  background: rgba(255,255,255,.035) !important;
+}
+
+/* Prevent sections from ever becoming blank while preserving reveal motion. */
 [class*="RajDelightPremium_section"][data-reveal] {
   opacity: 1 !important;
   transform: none !important;
+  visibility: visible !important;
+  animation: rajDelightSectionEnter .75s cubic-bezier(.2,.7,.2,1) both;
 }
 
-/* Preserve a refined entrance effect without allowing a section to remain hidden. */
 @keyframes rajDelightSectionEnter {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
 }
-[class*="RajDelightPremium_section"][data-reveal] {
-  animation: rajDelightSectionEnter .75s cubic-bezier(.2,.7,.2,1) both;
+
+/* Restore lively but restrained motion across the premium system. */
+[class*="RajDelightPremium_heroMedia"] {
+  animation: rajDelightHeroBreathe 14s ease-in-out infinite alternate !important;
+  will-change: transform;
 }
 
-/* Use a proper Navratri / vrat thali image for the seasonal feature only. */
+@keyframes rajDelightHeroBreathe {
+  from { transform: scale(1.03) translate3d(0,0,0); }
+  to { transform: scale(1.055) translate3d(-6px,2px,0); }
+}
+
+[class*="RajDelightPremium_heroOrb"] {
+  animation: rajDelightOrb 16s ease-in-out infinite alternate !important;
+}
+
+@keyframes rajDelightOrb {
+  from { transform: translate3d(0,0,0) rotate(0deg); }
+  to { transform: translate3d(-18px,18px,0) rotate(11deg); }
+}
+
+[class*="RajDelightPremium_signatureGrid"] [class*="dish"],
+[class*="RajDelightPremium_menuChapters"] [class*="chapter"] {
+  will-change: transform;
+}
+
+[class*="RajDelightPremium_dishImage"],
+[class*="RajDelightPremium_chapter"],
+[class*="RajDelightPremium_storyImage"],
+[class*="RajDelightPremium_seasonImage"],
+[class*="RajDelightPremium_galleryLarge"],
+[class*="RajDelightPremium_galleryTile"] {
+  transition: transform .35s ease, box-shadow .45s ease, border-color .35s ease !important;
+}
+
+/* Remove fragile third-party image URLs from the visual fallback path.
+   These are stable Unsplash assets and are only used when an <img> fails. */
+[class*="RajDelightPremium_imageFallback"] {
+  background-color: #21160f !important;
+  background-size: cover !important;
+  background-position: center !important;
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+/* Dish-specific fallback photography. */
+[class*="RajDelightPremium_imageFallback"][aria-label*="Tandoori Paneer Tikka"] {
+  background-image: linear-gradient(rgba(20,9,3,.08),rgba(20,9,3,.25)), url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Vegetable biryani"] {
+  background-image: linear-gradient(rgba(20,9,3,.08),rgba(20,9,3,.22)), url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Paneer Tikka Pizza"] {
+  background-image: url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Masala Dosa"] {
+  background-image: url("https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="restaurant interior"] {
+  background-image: linear-gradient(rgba(10,5,2,.04),rgba(10,5,2,.18)), url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85") !important;
+}
+
+/* Category/chapter fallback photography — each broken tile gets its own visual. */
+[class*="RajDelightPremium_imageFallback"][aria-label*="Indian Main Course"] {
+  background-image: url("https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Biryani menu visual"] {
+  background-image: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Chinese Appetizers"] {
+  background-image: url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Delicious Burger"] {
+  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Italian Pasta"] {
+  background-image: url("https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Special Thali"] {
+  background-image: url("https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="South Indian"] {
+  background-image: url("https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Dessert"] {
+  background-image: url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Variety Of Ice Cream"] {
+  background-image: url("https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=85") !important;
+}
+[class*="RajDelightPremium_imageFallback"][aria-label*="Drinks"] {
+  background-image: url("https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=85") !important;
+}
+
+/* Give the seasonal card an explicit, stable visual too. */
 [class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] {
   background-color: #d7c6b1;
-  background-image: url("https://www.indiaathome.com.au/cdn/shop/articles/Untitled-1_2_1170x.jpg?v=1663846025");
+  background-image: url("https://images.unsplash.com/photo-1598514982901-ae62709f7b82?auto=format&fit=crop&w=1200&q=85");
   background-size: cover;
   background-position: center;
 }
 
-[class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] > img {
-  opacity: 0 !important;
+/* If the seasonal external image fails, the visual stays present behind the fallback. */
+[class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] [class*="imageFallback"] {
+  background-image: url("https://images.unsplash.com/photo-1598514982901-ae62709f7b82?auto=format&fit=crop&w=1200&q=85") !important;
 }
 
-/* Give the directions/call/order controls enough breathing room. */
+/* Contact/order controls: keep clear breathing room. */
 [class*="RajDelightPremium_visitActions"] {
   gap: 14px !important;
-}
-
-[class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] {
-  margin-top: 16px !important;
 }
 
 @media (max-width: 700px) {
   [class*="RajDelightPremium_visitActions"] {
     row-gap: 14px !important;
   }
-
-  [class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] {
-    margin-top: 18px !important;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [class*="RajDelightPremium_section"][data-reveal] {
+  [class*="RajDelightPremium_section"][data-reveal],
+  [class*="RajDelightPremium_heroMedia"],
+  [class*="RajDelightPremium_heroOrb"] {
     animation: none !important;
   }
 }
