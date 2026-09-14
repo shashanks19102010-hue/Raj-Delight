@@ -13,13 +13,7 @@
   text-transform: uppercase !important;
 }
 
-/*
- * THEME FIX
- * The Premium stylesheet previously inverted --espresso in dark mode.
- * But --espresso is also used by menu/visit/marquee as a dark surface,
- * so the inversion produced a light surface with light text and looked blank.
- * Keep surface tokens semantically stable and change the actual page text/surfaces.
- */
+/* THEME FIX: never invert the semantic dark surface token. */
 html[data-theme="dark"] [class*="RajDelightPremium_site"] {
   --ivory: #0f0b08 !important;
   --paper: #17110d !important;
@@ -33,7 +27,6 @@ html[data-theme="dark"] [class*="RajDelightPremium_site"] {
   background: #0f0b08 !important;
 }
 
-/* Dark-theme surfaces must stay dark, while copy remains readable. */
 html[data-theme="dark"] [class*="RajDelightPremium_menuSection"],
 html[data-theme="dark"] [class*="RajDelightPremium_visit"],
 html[data-theme="dark"] [class*="RajDelightPremium_marquee"] {
@@ -94,7 +87,21 @@ html[data-theme="dark"] [class*="RajDelightPremium_searchBox"] {
   background: rgba(255,255,255,.035) !important;
 }
 
-/* Prevent sections from ever becoming blank while preserving reveal motion. */
+/* Light theme must stay high-contrast as well. */
+html[data-theme="light"] [class*="RajDelightPremium_site"] {
+  --ivory: #f5f0e6 !important;
+  --paper: #fbf7ef !important;
+  --espresso: #17120e !important;
+  --gold: #bd9650 !important;
+  --gold2: #e2c384 !important;
+  --muted: #756b60 !important;
+  --line: rgba(53,39,24,.16) !important;
+  --dark-line: rgba(255,245,228,.14) !important;
+  color: #17120e !important;
+  background: #f5f0e6 !important;
+}
+
+/* Reveal motion without an invisible initial state. */
 [class*="RajDelightPremium_section"][data-reveal] {
   opacity: 1 !important;
   transform: none !important;
@@ -107,7 +114,7 @@ html[data-theme="dark"] [class*="RajDelightPremium_searchBox"] {
   to { opacity: 1; transform: none; }
 }
 
-/* Restore lively but restrained motion across the premium system. */
+/* Restore lively but restrained motion. */
 [class*="RajDelightPremium_heroMedia"] {
   animation: rajDelightHeroBreathe 14s ease-in-out infinite alternate !important;
   will-change: transform;
@@ -118,18 +125,11 @@ html[data-theme="dark"] [class*="RajDelightPremium_searchBox"] {
   to { transform: scale(1.055) translate3d(-6px,2px,0); }
 }
 
-[class*="RajDelightPremium_heroOrb"] {
-  animation: rajDelightOrb 16s ease-in-out infinite alternate !important;
-}
+[class*="RajDelightPremium_heroOrb"] { animation: rajDelightOrb 16s ease-in-out infinite alternate !important; }
 
 @keyframes rajDelightOrb {
   from { transform: translate3d(0,0,0) rotate(0deg); }
   to { transform: translate3d(-18px,18px,0) rotate(11deg); }
-}
-
-[class*="RajDelightPremium_signatureGrid"] [class*="dish"],
-[class*="RajDelightPremium_menuChapters"] [class*="chapter"] {
-  will-change: transform;
 }
 
 [class*="RajDelightPremium_dishImage"],
@@ -141,8 +141,45 @@ html[data-theme="dark"] [class*="RajDelightPremium_searchBox"] {
   transition: transform .35s ease, box-shadow .45s ease, border-color .35s ease !important;
 }
 
-/* Remove fragile third-party image URLs from the visual fallback path.
-   These are stable Unsplash assets and are only used when an <img> fails. */
+/* Replace fragile gravy.sg/Swiggy visuals at the rendering layer. */
+[class*="RajDelightPremium_heroMedia"] {
+  background-image: linear-gradient(rgba(8,5,2,.2),rgba(8,5,2,.25)), url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1800&q=88") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+[class*="RajDelightPremium_heroMedia"] > img { opacity: 0 !important; }
+
+[class*="RajDelightPremium_dishImage"]:has(img[alt="Tandoori Paneer Tikka"]),
+[class*="RajDelightPremium_chapter"]:has(img[src*="gravy.sg"]) {
+  background-image: url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=88") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+[class*="RajDelightPremium_dishImage"]:has(img[alt="Veg Hyderabadi Biryani"]) {
+  background-image: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1000&q=88") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+[class*="RajDelightPremium_chapter"]:has(img[src*="media-assets.swiggy.com"])[aria-label*="Featured"] {
+  background-size: cover !important;
+}
+[class*="RajDelightPremium_chapter"]:has(img[src*="be4e0e26fdd3f62ecf8e09f57e77d72e"]) {
+  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=88") !important;
+}
+[class*="RajDelightPremium_chapter"]:has(img[src*="a4d9cea5c4bf70725b3dd7931f0b5a70"]) {
+  background-image: url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1000&q=88") !important;
+}
+
+/* Make the gallery visually complete even when the legacy paneer URL fails. */
+[class*="RajDelightPremium_galleryGrid"] > *:has(img[src*="gravy.sg"]) {
+  background-image: url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=88") !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* Better failure-state photography, not black cards. */
 [class*="RajDelightPremium_imageFallback"] {
   background-color: #21160f !important;
   background-size: cover !important;
@@ -150,78 +187,34 @@ html[data-theme="dark"] [class*="RajDelightPremium_searchBox"] {
   color: transparent !important;
   font-size: 0 !important;
 }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Tandoori Paneer Tikka"] { background-image: url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Vegetable biryani"] { background-image: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Paneer Tikka Pizza"] { background-image: url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Masala Dosa"] { background-image: url("https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Indian Main Course"] { background-image: url("https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Chinese Appetizers"] { background-image: url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Delicious Burger"] { background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Italian Pasta"] { background-image: url("https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Special Thali"] { background-image: url("https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="South Indian"] { background-image: url("https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Dessert"] { background-image: url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Variety Of Ice Cream"] { background-image: url("https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="Drinks"] { background-image: url("https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=88") !important; }
+[class*="RajDelightPremium_imageFallback"][aria-label*="restaurant interior"] { background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=88") !important; }
 
-/* Dish-specific fallback photography. */
-[class*="RajDelightPremium_imageFallback"][aria-label*="Tandoori Paneer Tikka"] {
-  background-image: linear-gradient(rgba(20,9,3,.08),rgba(20,9,3,.25)), url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Vegetable biryani"] {
-  background-image: linear-gradient(rgba(20,9,3,.08),rgba(20,9,3,.22)), url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Paneer Tikka Pizza"] {
-  background-image: url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Masala Dosa"] {
-  background-image: url("https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="restaurant interior"] {
-  background-image: linear-gradient(rgba(10,5,2,.04),rgba(10,5,2,.18)), url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85") !important;
-}
-
-/* Category/chapter fallback photography — each broken tile gets its own visual. */
-[class*="RajDelightPremium_imageFallback"][aria-label*="Indian Main Course"] {
-  background-image: url("https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Biryani menu visual"] {
-  background-image: url("https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Chinese Appetizers"] {
-  background-image: url("https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Delicious Burger"] {
-  background-image: url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Italian Pasta"] {
-  background-image: url("https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Special Thali"] {
-  background-image: url("https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="South Indian"] {
-  background-image: url("https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Dessert"] {
-  background-image: url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Variety Of Ice Cream"] {
-  background-image: url("https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=85") !important;
-}
-[class*="RajDelightPremium_imageFallback"][aria-label*="Drinks"] {
-  background-image: url("https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=85") !important;
-}
-
-/* Give the seasonal card an explicit, stable visual too. */
+/* Seasonal section: use an actually recognizable Navratri vrat thali reference. */
 [class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] {
-  background-color: #d7c6b1;
-  background-image: url("https://images.unsplash.com/photo-1598514982901-ae62709f7b82?auto=format&fit=crop&w=1200&q=85");
-  background-size: cover;
-  background-position: center;
+  background-color: #d7c6b1 !important;
+  background-image: url("https://zamaorganics.com/cdn/shop/articles/Untitled_design_38.jpg?v=1727932911&width=1500") !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
+[class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] > img { opacity: 0 !important; }
 
-/* If the seasonal external image fails, the visual stays present behind the fallback. */
-[class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] [class*="imageFallback"] {
-  background-image: url("https://images.unsplash.com/photo-1598514982901-ae62709f7b82?auto=format&fit=crop&w=1200&q=85") !important;
-}
-
-/* Contact/order controls: keep clear breathing room. */
-[class*="RajDelightPremium_visitActions"] {
-  gap: 14px !important;
-}
+[class*="RajDelightPremium_visitActions"] { gap: 14px !important; }
 
 @media (max-width: 700px) {
-  [class*="RajDelightPremium_visitActions"] {
-    row-gap: 14px !important;
-  }
+  [class*="RajDelightPremium_visitActions"] { row-gap: 14px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
