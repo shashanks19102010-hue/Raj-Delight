@@ -1,0 +1,62 @@
+/* Final targeted contrast polish; layout and typography remain unchanged. */
+
+/* Light-mode menu chapters keep readable white type over the photographic veil. */
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapter"] {
+  background-color: #19120d !important;
+  color: #fff !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapterCopy"] small,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapterCopy"] strong,
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapter"] > b {
+  color: #fff !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_chapterCopy"] em {
+  color: #e2c384 !important;
+}
+
+/* Menu rows: dark text on light mode, warm ivory on dark mode. */
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuRowHead"] {
+  color: #17130f !important;
+  border-color: rgba(23,19,15,.14) !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuRowHead"] small {
+  color: #72685c !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuRowHead"] b {
+  color: #c4a15a !important;
+  border-color: rgba(23,19,15,.14) !important;
+}
+html[data-theme="dark"] [class*="RajDelightPremium_menuSection"] [class*="RajDelightPremium_menuRowHead"] {
+  color: #f6efe4 !important;
+}
+
+/* Zomato / Swiggy retain clear partner identity without changing the page design. */
+[class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] a:first-child {
+  background: #e23744 !important;
+  border-color: #e23744 !important;
+  color: #fff !important;
+}
+[class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] a:nth-child(2) {
+  background: #fc8019 !important;
+  border-color: #fc8019 !important;
+  color: #fff !important;
+}
+[class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] a:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+/* The information card stays visibly separated in both themes. */
+html[data-theme="light"] [class*="RajDelightPremium_contactCard"] {
+  background: rgba(23,19,15,.028) !important;
+  border-color: rgba(23,19,15,.14) !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_contactCard"] > div {
+  border-color: rgba(23,19,15,.12) !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_contactCard"] small {
+  color: #72685c !important;
+}
+html[data-theme="light"] [class*="RajDelightPremium_contactCard"] strong {
+  color: #17130f !important;
+}
