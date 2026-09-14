@@ -1,0 +1,57 @@
+.siteFix .menuSection,
+.siteFix.dark .menuSection {
+  background: #17120e !important;
+  color: #f7efe3 !important;
+}
+
+.siteFix .visit,
+.siteFix.dark .visit {
+  background: #17120e !important;
+  color: #f6efe3 !important;
+}
+
+.siteFix .menuSection .menuTools {
+  background: linear-gradient(#17120e 78%, transparent) !important;
+}
+
+.siteFix .menuSection .menuRowHead,
+.siteFix .menuSection .menuItems a {
+  color: #f7efe3 !important;
+}
+
+.siteFix .menuSection .menuRowHead small,
+.siteFix .menuSection .menuMeta,
+.siteFix .menuSection .menuIntro > div:first-child > p:last-child {
+  color: rgba(247, 239, 227, .58) !important;
+}
+
+.siteFix .menuSection .menuRowHead b {
+  color: #e2c384 !important;
+  border-color: rgba(255, 245, 228, .2) !important;
+}
+
+.siteFix .season {
+  background: var(--paper);
+}
+
+.siteFix .seasonCopy .primaryCta {
+  min-width: 220px;
+  padding-inline: 24px;
+  justify-content: center;
+}
+
+.siteFix .primaryCta,
+.siteFix .secondaryCta,
+.siteFix .visitActions a {
+  font-family: var(--font-ui), Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.siteFix .heroActions .secondaryCta {
+  border-color: rgba(255,255,255,.34);
+}
+
+@media (max-width: 700px) {
+  .siteFix .seasonCopy .primaryCta {
+    width: 100%;
+  }
+}
