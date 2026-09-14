@@ -1,0 +1,28 @@
+/* Surgical fixes only: do not alter the existing design system. */
+
+/* Light-theme reveal safeguard: the premium page must never leave revealed sections invisible after a theme switch. */
+html[data-theme="light"] main [data-reveal] {
+  animation: rajDelightLightReveal .72s cubic-bezier(.2,.7,.2,1) both;
+}
+
+@keyframes rajDelightLightReveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Use an actual Navratri/vrat thali visual for the seasonal feature only. */
+button[aria-label="View seasonal thali"] {
+  background-color: #d7c6b1;
+  background-image: url("https://www.indiaathome.com.au/cdn/shop/articles/Untitled-1_2_1170x.jpg?v=1663846025");
+  background-size: cover;
+  background-position: center;
+}
+
+button[aria-label="View seasonal thali"] > img {
+  opacity: 0 !important;
+}
+
+/* Keep the existing seasonal image hover behavior while using the new visual. */
+button[aria-label="View seasonal thali"] > span {
+  z-index: 2;
+}
