@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
+import './raj-delight-tweaks.css';
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
