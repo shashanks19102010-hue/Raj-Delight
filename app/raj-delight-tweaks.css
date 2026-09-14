@@ -29,6 +29,18 @@
   animation: rajDelightSectionEnter .75s cubic-bezier(.2,.7,.2,1) both;
 }
 
+/* Use a proper Navratri / vrat thali image for the seasonal feature only. */
+[class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] {
+  background-color: #d7c6b1;
+  background-image: url("https://www.indiaathome.com.au/cdn/shop/articles/Untitled-1_2_1170x.jpg?v=1663846025");
+  background-size: cover;
+  background-position: center;
+}
+
+[class*="RajDelightPremium_seasonImage"][aria-label="View seasonal thali"] > img {
+  opacity: 0 !important;
+}
+
 /* Give the directions/call/order controls enough breathing room. */
 [class*="RajDelightPremium_visitActions"] {
   gap: 14px !important;
