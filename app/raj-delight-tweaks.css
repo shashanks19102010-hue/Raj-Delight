@@ -1,0 +1,55 @@
+/* Raj Delight — surgical visual fixes only */
+
+/* Keep the requested CTA typography identical across all three hero actions. */
+[class*="RajDelightPremium_primaryCta"],
+[class*="RajDelightPremium_secondaryCta"],
+[class*="RajDelightPremium_orderToggle"],
+[class*="RajDelightPremium_seasonCta"] {
+  font-family: var(--font-ui), Inter, system-ui, sans-serif !important;
+  font-size: 8px !important;
+  font-weight: 900 !important;
+  letter-spacing: .15em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+}
+
+/* Prevent sections from ever becoming blank when the page is resumed, restored,
+   or the theme is switched before the scroll-based reveal state runs. */
+[class*="RajDelightPremium_section"][data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Preserve a refined entrance effect without allowing a section to remain hidden. */
+@keyframes rajDelightSectionEnter {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+[class*="RajDelightPremium_section"][data-reveal] {
+  animation: rajDelightSectionEnter .75s cubic-bezier(.2,.7,.2,1) both;
+}
+
+/* Give the directions/call/order controls enough breathing room. */
+[class*="RajDelightPremium_visitActions"] {
+  gap: 14px !important;
+}
+
+[class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] {
+  margin-top: 16px !important;
+}
+
+@media (max-width: 700px) {
+  [class*="RajDelightPremium_visitActions"] {
+    row-gap: 14px !important;
+  }
+
+  [class*="RajDelightPremium_contactCard"] [class*="RajDelightPremium_visitActions"] {
+    margin-top: 18px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*="RajDelightPremium_section"][data-reveal] {
+    animation: none !important;
+  }
+}
