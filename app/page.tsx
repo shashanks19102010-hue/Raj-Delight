@@ -1,5 +1,5 @@
-import { RajDelightSignatureV2 } from '@/components/RajDelightSignatureV2';
+import { RajDelightPremium } from '@/components/RajDelightPremium';
 
 export default function Page() {
-  return <RajDelightSignatureV2 />;
+  return <RajDelightPremium />;
 }
