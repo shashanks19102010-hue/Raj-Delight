@@ -1,1 +1,0 @@
-V3 deployment candidate ready for review.
