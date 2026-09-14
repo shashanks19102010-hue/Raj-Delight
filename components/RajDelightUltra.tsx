@@ -15,13 +15,13 @@ const IMG={
   interior:'https://img3.restaurantguru.com/c8b1-Restaurant-Raj-Delight-interior.jpg',
   listing1:'https://content.jdmagicbox.com/v2/comp/chandausi/a8/9999p5923.5923.250401114055.d2a8/catalogue/raj-delight-avas-vikas-colony-chandausi-restaurants-bi3c56zh4s-250.jpg',
   listing2:'https://content.jdmagicbox.com/v2/comp/chandausi/a8/9999p5923.5923.250401114055.d2a8/catalogue/raj-delight-avas-vikas-colony-chandausi-restaurants-pdycxhi8xa-250.jpg',
-  paneer:'https://spicesafari.in/assets/images/Starter.png',
-  biryani:'https://www.tiktokbriyani.com/assets/images/veg/Vegetable-Biryani.webp',
-  pizza:'https://b.zmtcdn.com/data/pictures/chains/1/21415351/c5b3e2010da3553ec3ac889204d3e786.jpg',
-  dosa:'https://www.skandacloudkitchen.in/assets/masala-dosa-BCIr_LYP.png',
-  thali:'https://media-assets.swiggy.com/swiggy/image/upload/f_auto%2Cq_auto%2Cfl_lossy/fc8mmevwmbsje3ib5kbd',
-  drink:'https://hospitalitycareerprofile.com/uploads/images/202605/image_1200x_69ff4cd3b82d4.webp',
-  dessert:'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_300%2Ch_300%2Ce_grayscale%2Cc_fit/FOOD_CATALOG/IMAGES/CMS/2025/7/25/0e80b187-03b4-4e42-8037-02dfedf0f1f1_4d2c1c80-f646-4e5e-847d-5cf12b8e527c.jpg',
+  paneer:'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1600&q=90',
+  biryani:'https://images.unsplash.com/photo-1599354607448-8ad6e92b027a?auto=format&fit=crop&w=1600&q=90',
+  pizza:'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=90',
+  dosa:'https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1600&q=90',
+  thali:'https://images.unsplash.com/photo-1598514982901-ae62709f7b82?auto=format&fit=crop&w=1600&q=90',
+  drink:'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1600&q=90',
+  dessert:'https://images.unsplash.com/photo-1598514982901-ae62709f7b82?auto=format&fit=crop&w=1200&q=90',
 };
 
 const PRICE:Record<string,string>={
