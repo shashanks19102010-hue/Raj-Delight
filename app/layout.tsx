@@ -1,7 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import './ux-upgrade.css';
-import './mobile-polish.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://raj-delight-shashanks19102010-hues-projects.vercel.app'),
