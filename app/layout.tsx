@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
 import './raj-delight-tweaks.css';
+import './raj-delight-theme-fix.css';
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -69,6 +70,23 @@ const restaurantSchema = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${display.variable} ${ui.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                try {
+                  var key = 'raj-delight-theme';
+                  var saved = localStorage.getItem(key);
+                  var theme = saved === 'dark' || saved === 'light' ? saved : 'light';
+                  document.documentElement.setAttribute('data-theme', theme);
+                  document.documentElement.style.colorScheme = theme;
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
