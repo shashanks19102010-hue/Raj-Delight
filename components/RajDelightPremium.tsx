@@ -11,13 +11,13 @@ const MAPS = 'https://www.google.com/maps/search/?api=1&query=Raj%20Delight%2015
 const INSTAGRAM = 'https://www.instagram.com/raj_delight/';
 
 const IMG = {
-  hero: 'https://images.unsplash.com/photo-1599354607448-8ad6e92b027a?auto=format&fit=crop&w=1800&q=88',
+  hero: 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1800&q=88',
   interior: 'https://img3.restaurantguru.com/c8b1-Restaurant-Raj-Delight-interior.jpg',
-  paneer: 'https://www.gravy.sg/assets/dish-paneer-tikka.jpg',
+  paneer: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1400&q=88',
   curry: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1400&q=88',
-  momos: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_240%2Ch_240/a4d9cea5c4bf70725b3dd7931f0b5a70',
+  momos: 'https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=1400&q=88',
   pizza: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=88',
-  burger: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/be4e0e26fdd3f62ecf8e09f57e77d72e',
+  burger: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=88',
   pasta: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1400&q=88',
   thali: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1400&q=88',
   dosa: 'https://images.unsplash.com/photo-1708146464361-5c5ce4f9abb6?auto=format&fit=crop&w=1400&q=88',
@@ -113,6 +113,14 @@ export function RajDelightPremium() {
     return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
   }, [lightbox]);
 
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    document.documentElement.style.colorScheme = next;
+    try { window.localStorage.setItem('raj-delight-theme', next); } catch {}
+    setTheme(next);
+  };
+
   const jump = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   const filtered = useMemo(() => {
@@ -155,10 +163,10 @@ export function RajDelightPremium() {
             <button onClick={() => jump('contact')}>Contact</button>
           </nav>
           <div className={styles.navTools}>
-            <button className={styles.theme} onClick={() => setTheme((value) => value === 'light' ? 'dark' : 'light')} aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}><ThemeIcon dark={theme === 'light'} /></button>
+            <button className={styles.theme} onClick={toggleTheme} aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}><ThemeIcon dark={theme === 'light'} /></button>
             <a className={styles.navOrder} href={ZOMATO} target="_blank" rel="noreferrer">Order <Arrow /></a>
           </div>
-          <button className={styles.mobileTheme} onClick={() => setTheme((value) => value === 'light' ? 'dark' : 'light')} aria-label="Toggle theme"><ThemeIcon dark={theme === 'light'} /></button>
+          <button className={styles.mobileTheme} onClick={toggleTheme} aria-label="Toggle theme"><ThemeIcon dark={theme === 'light'} /></button>
         </div>
       </header>
 
@@ -184,7 +192,7 @@ export function RajDelightPremium() {
           <div className={styles.heroMeta}>
             <div><span>Rating</span><strong>4.3</strong></div>
             <div><span>Categories</span><strong>{menuCategories.length}</strong></div>
-            <div><span>Hours shown</span><strong>9:30–12</strong></div>
+            <div><span>Hours shown</span><strong>9:30 AM–12:00 AM</strong></div>
           </div>
         </div>
       </section>
