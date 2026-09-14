@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
-import './raj-delight-tweaks.css';
-import './raj-delight-theme-fix.css';
-import './raj-delight-final-polish.css';
+import './raj-delight-theme.css';
 
 const display = Cormorant_Garamond({
   subsets: ['latin'],
@@ -22,13 +20,13 @@ const siteUrl = 'https://raj-delight-three.vercel.app';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Raj Delight | Vegetarian Restaurant in Chandausi',
-  description: 'Raj Delight in Chandausi — discover the complete vegetarian menu, signature flavours, gallery and direct ordering links.',
+  description: 'Raj Delight in Chandausi — explore the vegetarian menu, signature flavours, gallery and direct ordering links.',
   keywords: ['Raj Delight', 'Raj Delight Chandausi', 'Raj Delight menu', 'restaurant in Chandausi', 'vegetarian restaurant Chandausi', 'food delivery Chandausi'],
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Raj Delight | Chandausi',
-    description: 'Vegetarian dining, signature flavours, complete public menu and online ordering in Chandausi.',
+    description: 'Vegetarian dining, complete public menu, gallery and online ordering in Chandausi.',
     type: 'website',
     siteName: 'Raj Delight',
     url: siteUrl,
@@ -43,7 +41,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#17120e',
+  themeColor: '#0c0a08',
 };
 
 const restaurantSchema = {
@@ -72,27 +70,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning className={`${display.variable} ${ui.variable}`}>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                try {
-                  var key = 'raj-delight-theme';
-                  var saved = localStorage.getItem(key);
-                  var theme = saved === 'dark' || saved === 'light' ? saved : 'light';
-                  document.documentElement.setAttribute('data-theme', theme);
-                  document.documentElement.style.colorScheme = theme;
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
+        <meta name="theme-color" content="#0c0a08" />
       </head>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }} />
         {children}
       </body>
     </html>
