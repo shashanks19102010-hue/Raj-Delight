@@ -1,1 +1,77 @@
 html[data-theme='light']{--bg:#f6f1e8;--surface:#fffaf2;--ink:#1c1712;--muted:#74685a;--line:rgba(28,23,18,.13);--gold:#b88a43;color-scheme:light}html[data-theme='dark']{--bg:#0f0c09;--surface:#18130f;--ink:#f6eee2;--muted:#b3a595;--line:rgba(255,255,255,.12);--gold:#d2a95f;color-scheme:dark}html{background:var(--bg);color:var(--ink)}body{background:var(--bg);color:var(--ink);transition:background .35s ease,color .35s ease}
+
+/* Premium motion layer — additive only. Existing layout/content remains untouched. */
+@keyframes rdFadeUp{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:none}}
+@keyframes rdFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes rdSoftScale{from{opacity:.72;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
+@keyframes rdFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes rdShimmer{0%{transform:translateX(-140%)}100%{transform:translateX(160%)}}
+@keyframes rdLineGlow{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes rdHeroText{from{opacity:0;transform:translate3d(0,34px,0)}to{opacity:1;transform:none}}
+@keyframes rdHeroMeta{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* First-load entrance rhythm */
+#home .heroContent{animation:rdHeroText .9s cubic-bezier(.22,.61,.36,1) both .08s}
+#home .heroActions{animation:rdHeroText .8s cubic-bezier(.22,.61,.36,1) both .22s}
+#home .heroMeta{animation:rdHeroMeta .75s ease both .4s}
+#home .scrollHint{animation:rdFadeIn .8s ease both .65s}
+
+/* Ambient hero depth */
+#home .heroImage{will-change:transform;transform-origin:center center}
+#home .heroVeil{animation:rdFadeIn 1.1s ease both}
+#home:after{animation:rdFadeIn 1.2s ease both .2s,rdLineGlow 4s ease-in-out infinite 1.5s}
+
+/* Magnetic-feel controls */
+[class*="primary"],[class*="lightButton"],[class*="callHero"],[class*="orderButton"],[class*="callButton"],[class*="mobileMenuButton"]{will-change:transform}
+[class*="primary"]:active,[class*="lightButton"]:active,[class*="callHero"]:active,[class*="orderButton"]:active,[class*="callButton"]:active,[class*="mobileMenuButton"]:active{transform:translateY(0) scale(.97)!important;transition-duration:.1s}
+[class*="themeButton"] svg{transition:transform .45s cubic-bezier(.22,.61,.36,1)}
+[class*="themeButton"]:hover svg{transform:rotate(22deg) scale(1.08)}
+[class*="orderButton"] svg,[class*="callCard"] svg,[class*="primary"] svg,[class*="lightButton"] svg,[class*="callHero"] svg,[class*="darkPrimary"] svg,[class*="darkSecondary"] svg{transition:transform .35s ease}
+[class*="orderButton"]:hover svg,[class*="callCard"]:hover svg,[class*="primary"]:hover svg,[class*="lightButton"]:hover svg,[class*="callHero"]:hover svg,[class*="darkPrimary"]:hover svg,[class*="darkSecondary"]:hover svg{transform:translate(3px,-3px)}
+
+/* Nav and brand micro-motion */
+[class*="brand"] img{transition:transform .45s cubic-bezier(.22,.61,.36,1),filter .35s ease}
+[class*="brand"]:hover img{transform:rotate(-5deg) scale(1.06)}
+[class*="nav"]{transition:background .35s ease,border-color .35s ease,box-shadow .35s ease}
+
+/* Section media hover depth */
+[class*="aboutImage"], [class*="specialCard"], [class*="cuisineCard"], [class*="galleryCard"], [class*="galleryLarge"], [class*="contactCard"]{will-change:transform}
+[class*="aboutImage"] img{transition:transform .9s cubic-bezier(.22,.61,.36,1),filter .5s ease}
+[class*="aboutImage"]:hover img{transform:scale(1.035)}
+[class*="specialImage"] img,[class*="cuisineCard"] img,[class*="galleryCard"] img,[class*="galleryLarge"] img{will-change:transform}
+[class*="specialCard"]:hover,[class*="cuisineCard"]:hover,[class*="galleryCard"]:hover,[class*="galleryLarge"]:hover{transition-timing-function:cubic-bezier(.22,.61,.36,1)}
+
+/* Soft stagger for visible menu chapters */
+[class*="chapter"]{animation:rdFadeUp .65s cubic-bezier(.22,.61,.36,1) both;}
+[class*="chapter"]:nth-child(2){animation-delay:.04s}.chapter:nth-child(3){animation-delay:.08s}.chapter:nth-child(4){animation-delay:.12s}.chapter:nth-child(5){animation-delay:.16s}.chapter:nth-child(6){animation-delay:.2s}.chapter:nth-child(7){animation-delay:.24s}.chapter:nth-child(8){animation-delay:.28s}
+
+/* Search / chip interaction */
+[class*="search"]{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+[class*="search"]:focus-within{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.08);border-color:color-mix(in srgb,var(--gold) 65%,var(--line))}
+[class*="chips"] button{transition:transform .22s ease,background .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease}
+[class*="chips"] button:hover{transform:translateY(-2px)}
+[class*="activeChip"]{box-shadow:0 7px 20px rgba(0,0,0,.1)}
+
+/* Order panel / mobile sheet entrance */
+[class*="orderPanel"]{animation:rdFadeUp .28s cubic-bezier(.22,.61,.36,1) both}
+[class*="orderCards"] [class*="zomato"],[class*="orderCards"] [class*="swiggy"]{animation:rdSoftScale .45s cubic-bezier(.22,.61,.36,1) both}
+[class*="orderCards"] [class*="swiggy"]{animation-delay:.06s}
+[class*="sheet"]{animation:rdFadeIn .28s ease both}
+[class*="sheetLinks"] button{transition:padding-left .3s ease,color .3s ease}
+[class*="sheetLinks"] button:hover{padding-left:8px;color:var(--gold)}
+
+/* Gallery lightbox polish */
+[class*="lightbox"]{animation:rdFadeIn .25s ease both}
+[class*="lightboxMedia"] img,[class*="lightbox"] img{animation:rdSoftScale .45s cubic-bezier(.22,.61,.36,1) both}
+[class*="prev"],[class*="next"],[class*="close"]{transition:transform .25s ease,background .25s ease,border-color .25s ease}
+[class*="prev"]:hover,[class*="next"]:hover{transform:scale(1.06)}
+[class*="close"]:hover{transform:rotate(6deg) scale(1.05)}
+
+/* Subtle ambient gold motion on the scroll indicator */
+[class*="scrollHint"] span:after{animation:linePulse 1.7s ease-in-out infinite,rdLineGlow 2.8s ease-in-out infinite}
+
+/* Keep motion accessible */
+@media (prefers-reduced-motion:reduce){
+  #home .heroContent,#home .heroActions,#home .heroMeta,#home .scrollHint,#home .heroVeil,#home:after,[class*="chapter"],[class*="orderPanel"],[class*="sheet"],[class*="lightbox"],[class*="lightboxMedia"] img,[class*="lightbox"] img{animation:none!important}
+  [class*="aboutImage"] img,[class*="specialImage"] img,[class*="cuisineCard"] img,[class*="galleryCard"] img,[class*="galleryLarge"] img{transition:none!important}
+}
