@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   keywords: ['Raj Delight', 'Raj Delight Chandausi', 'Raj Delight menu', 'restaurant in Chandausi', 'vegetarian restaurant Chandausi'],
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
+  icons: {
+    icon: '/grok_1789624913553.jpg',
+    shortcut: '/grok_1789624913553.jpg',
+    apple: '/grok_1789624913553.jpg',
+  },
   openGraph: { title: 'Raj Delight | Chandausi', description: 'Vegetarian dining, gallery and online ordering in Chandausi.', type: 'website', siteName: 'Raj Delight', url: siteUrl },
   twitter: { card: 'summary_large_image', title: 'Raj Delight | Chandausi', description: 'Explore Raj Delight’s vegetarian menu, gallery and ordering links.' },
 };
