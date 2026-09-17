@@ -36,3 +36,28 @@ main > section:nth-of-type(8) {
     overflow-wrap: anywhere;
   }
 }
+
+/* Compatibility hardening for the existing section header alignment. */
+.sectionHead {
+  align-items: flex-end !important;
+}
+
+/* The base component also has a one-time `.revealed` animation. Override its name here so
+   supported scroll-timeline browsers use the safe transform-only animation instead. */
+@supports (animation-timeline: view()) {
+  [data-reveal] {
+    animation-name: rdSectionLift !important;
+    animation-duration: .85s !important;
+    animation-timing-function: cubic-bezier(.2,.7,.2,1) !important;
+    animation-fill-mode: both !important;
+    animation-timeline: view() !important;
+    animation-range: entry 0% cover 18% !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    animation: none !important;
+    transform: none !important;
+  }
+}
