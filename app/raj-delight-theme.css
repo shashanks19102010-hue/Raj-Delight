@@ -83,6 +83,16 @@ html[data-theme='dark'] .heroVeil{background:linear-gradient(180deg,rgba(6,5,4,.
 html[data-theme='dark'] [class*="orderPanel"]{box-shadow:0 28px 70px rgba(0,0,0,.38),0 0 0 1px rgba(210,169,95,.08)}
 html[data-theme='dark'] [class*="contactCard"]{box-shadow:0 18px 46px rgba(0,0,0,.24),0 0 0 1px rgba(210,169,95,.07)}
 
+/* Requested vegetarian category image replacements only. All other categories remain unchanged. */
+.cuisineGrid > [class*="cuisineCard"]:nth-child(8){background-image:url("https://dineout-media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_600%2Ch_468/v1708584882/99a10e48cad23d622ae0fe2668592c16.jpg");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(11){background-image:url("https://www.mymasalabox.in/wp-content/uploads/2021/01/Boondi-raita1.jpg");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(14){background-image:url("https://www.tarladalal.com/media/aloo%20paratha%20recipe_Pe8zlXB.webp");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(15){background-image:url("https://image.cdn.shpy.in/474920/ee2c29fa-8d7b-4db8-bad4-ab8726edfdbf-1778783742455.png?format=webp");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(22){background-image:url("https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/FOOD_CATALOG/IMAGES/CMS/2025/9/17/e4dd1ab7-81a3-4c78-ac46-05adb93fd7fa_df1df57b-de12-4083-8ea0-e8c9956785d5.png");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(32){background-image:url("https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_400/RX_THUMBNAIL/IMAGES/VENDOR/2024/12/16/06efaf40-b9e0-4841-a155-2326a2a99311_966226.jpg");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(33){background-image:url("https://www.indiaathome.com.au/cdn/shop/articles/Untitled-1_2_1170x.jpg?v=1663846025");background-size:cover;background-position:center}
+.cuisineGrid > [class*="cuisineCard"]:nth-child(8) img,.cuisineGrid > [class*="cuisineCard"]:nth-child(11) img,.cuisineGrid > [class*="cuisineCard"]:nth-child(14) img,.cuisineGrid > [class*="cuisineCard"]:nth-child(15) img,.cuisineGrid > [class*="cuisineCard"]:nth-child(22) img,.cuisineGrid > [class*="cuisineCard"]:nth-child(32) img,.cuisineGrid > [class*="cuisineCard"]:nth-child(33) img{opacity:0}
+
 /* Keep motion accessible */
 @media (prefers-reduced-motion:reduce){
   #home .heroContent,#home .heroActions,#home .heroMeta,#home .scrollHint,#home .heroVeil,#home:after,[class*="chapter"],[class*="orderPanel"],[class*="sheet"],[class*="lightbox"],[class*="lightboxMedia"] img,[class*="lightbox"] img{animation:none!important}
