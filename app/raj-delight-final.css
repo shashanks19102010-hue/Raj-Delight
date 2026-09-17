@@ -1,0 +1,32 @@
+/* Final responsive safety layer. Kept separate so the original visual system remains easy to review. */
+
+/* Smooth anchor landing below the fixed navigation. */
+main > section:nth-of-type(3),
+main > section:nth-of-type(5),
+main > section:nth-of-type(7),
+main > section:nth-of-type(8) {
+  scroll-margin-top: 78px;
+}
+
+/* Bottom dock must never hide the end of a mobile section. */
+@media (max-width: 640px) {
+  main > section:nth-of-type(8) {
+    padding-bottom: 126px !important;
+  }
+
+  main > section:nth-of-type(5) {
+    scroll-margin-top: 72px;
+  }
+
+  /* Reduce accidental tap highlight while preserving keyboard focus. */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Keep long menu/category titles from forcing horizontal overflow. */
+  main > section:nth-of-type(5) h2,
+  main > section:nth-of-type(6) strong {
+    overflow-wrap: anywhere;
+  }
+}
