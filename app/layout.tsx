@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
+import logoImage from '@/grok_1789624913553.jpg';
 import './globals.css';
 import './raj-delight-theme.css';
+import './raj-delight-polish.css';
 
 const display = Cormorant_Garamond({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const ui = DM_Sans({ subsets: ['latin'], variable: '--font-ui', display: 'swap' });
@@ -15,12 +17,12 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   alternates: { canonical: '/' },
   icons: {
-    icon: '/grok_1789624913553.jpg',
-    shortcut: '/grok_1789624913553.jpg',
-    apple: '/grok_1789624913553.jpg',
+    icon: logoImage.src,
+    shortcut: logoImage.src,
+    apple: logoImage.src,
   },
-  openGraph: { title: 'Raj Delight | Chandausi', description: 'Vegetarian dining, gallery and online ordering in Chandausi.', type: 'website', siteName: 'Raj Delight', url: siteUrl },
-  twitter: { card: 'summary_large_image', title: 'Raj Delight | Chandausi', description: 'Explore Raj Delight’s vegetarian menu, gallery and ordering links.' },
+  openGraph: { title: 'Raj Delight | Chandausi', description: 'Vegetarian dining, gallery and online ordering in Chandausi.', type: 'website', siteName: 'Raj Delight', url: siteUrl, images: [{ url: logoImage.src, alt: 'Raj Delight logo' }] },
+  twitter: { card: 'summary_large_image', title: 'Raj Delight | Chandausi', description: 'Explore Raj Delight’s vegetarian menu, gallery and ordering links.', images: [logoImage.src] },
 };
 
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#f6f1e8' };
@@ -29,6 +31,7 @@ const restaurantSchema = {
   '@context': 'https://schema.org', '@type': 'Restaurant', name: 'Raj Delight', url: siteUrl,
   telephone: '+91 79831 48985', servesCuisine: ['Indian', 'North Indian', 'South Indian', 'Indo-Chinese', 'Continental', 'Italian'],
   menu: `${siteUrl}/#menu`, address: { '@type': 'PostalAddress', streetAddress: '15 Lathi Bazar', addressLocality: 'Chandausi', addressRegion: 'Uttar Pradesh', addressCountry: 'IN' },
+  image: [logoImage.src],
   sameAs: ['https://www.instagram.com/raj_delight/', 'https://www.zomato.com/chandausi/raj-delight-restaurant-chandausi-locality/order', 'https://www.swiggy.com/city/chandausi/raj-delight-restaurant-chandausi-rest1102497'],
 };
 
