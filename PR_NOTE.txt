@@ -1,1 +1,0 @@
-Final QA branch snapshot; delete before merge.
