@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next';
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import logoImage from '@/grok_1789624913553.jpg';
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
 import './raj-delight-theme.css';
 import './raj-delight-polish.css';
+import './raj-delight-final.css';
 
 const display = Cormorant_Garamond({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const ui = DM_Sans({ subsets: ['latin'], variable: '--font-ui', display: 'swap' });
