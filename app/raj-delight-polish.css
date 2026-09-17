@@ -1,13 +1,13 @@
-/* Raj Delight premium polish layer: intentionally additive so the existing experience stays intact. */
+/* Raj Delight premium polish layer: additive and intentionally scoped by stable DOM attributes. */
 
-/* Use the supplied brand artwork wherever the existing header/footer image slots render. */
-.brand img,
-.footerBrand img {
+/* Supplied logo artwork: keep the existing header/footer slots but render the supplied asset. */
+button[aria-label="Raj Delight home"] > img,
+footer img {
   display: none !important;
 }
 
-.brand::before,
-.footerBrand::before {
+button[aria-label="Raj Delight home"]::before,
+footer .footerBrand::before {
   content: "";
   display: block;
   flex: 0 0 auto;
@@ -20,14 +20,15 @@
   filter: saturate(.88) contrast(1.03);
 }
 
-.footerBrand::before {
+footer .footerBrand::before {
   width: 40px;
   height: 40px;
 }
 
-/* Refined mobile menu control: label + restrained glyph instead of a naked hamburger. */
+/* Refined mobile menu control: retain the MENU label and add a tiny editorial glyph. */
 button[aria-label="Open navigation"] {
   display: inline-flex !important;
+  position: relative !important;
   min-height: 44px !important;
   width: 88px !important;
   padding: 0 14px !important;
@@ -35,7 +36,7 @@ button[aria-label="Open navigation"] {
   font-size: 9px !important;
   letter-spacing: .12em !important;
   border: 1px solid rgba(35,25,17,.16) !important;
-  background: color-mix(in srgb, var(--surface) 92%, white) !important;
+  background: color-mix(in srgb, var(--surface) 94%, white) !important;
   box-shadow: 0 9px 24px rgba(22,15,9,.08), inset 0 1px 0 rgba(255,255,255,.62) !important;
   backdrop-filter: blur(14px) !important;
   color: var(--ink) !important;
@@ -45,28 +46,30 @@ button[aria-label="Open navigation"]::before {
   content: "" !important;
   display: block !important;
   width: 16px !important;
-  height: 10px !important;
+  height: 9px !important;
   flex: 0 0 16px !important;
   border-top: 1.6px solid currentColor !important;
   border-bottom: 1.6px solid currentColor !important;
   box-shadow: none !important;
   position: relative !important;
+  opacity: .9 !important;
 }
 
 button[aria-label="Open navigation"]::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 6px;
-  height: 1.6px;
-  margin-left: 5px;
-  border-radius: 999px;
-  background: currentColor;
-  opacity: .82;
+  content: "" !important;
+  position: absolute !important;
+  left: 19px !important;
+  top: 50% !important;
+  width: 7px !important;
+  height: 1.6px !important;
+  border-radius: 999px !important;
+  background: currentColor !important;
+  transform: translateY(-50%) !important;
+  opacity: .82 !important;
 }
 
-/* View-timeline based motion reverses naturally when the visitor scrolls back up. */
-.site :global([data-reveal]) {
+/* Reliable reveal: content never stays hidden; view() makes it reversible on up/down scroll. */
+[data-reveal] {
   opacity: 1 !important;
   transform: none !important;
   animation: rdSectionReveal .9s cubic-bezier(.2,.7,.2,1) both !important;
@@ -76,81 +79,138 @@ button[aria-label="Open navigation"]::after {
 }
 
 @keyframes rdSectionReveal {
-  from { opacity: 0; transform: translate3d(0, 26px, 0); }
+  from { opacity: 0; transform: translate3d(0, 22px, 0); }
   to { opacity: 1; transform: none; }
 }
 
-/* Gentle image depth while scrolling; hover remains the main interaction. */
-.cuisineCard img,
-.specialImage img,
-.galleryCard img,
-.galleryLarge img,
-.aboutImage img {
-  transform: scale(1.035);
+/* Restrained image depth. Hero retains its existing cinematic treatment. */
+main > section:nth-of-type(3) img,
+main > section:nth-of-type(4) img,
+main > section:nth-of-type(6) img,
+main > section:nth-of-type(7) img {
   will-change: transform;
+}
+
+main > section:nth-of-type(3) img,
+main > section:nth-of-type(4) img,
+main > section:nth-of-type(6) img,
+main > section:nth-of-type(7) img {
   animation: rdImageFloat 1.1s cubic-bezier(.2,.7,.2,1) both;
   animation-timeline: view();
   animation-range: entry 0% cover 34%;
 }
 
 @keyframes rdImageFloat {
-  from { transform: translate3d(0, 12px, 0) scale(1.05); }
-  to { transform: translate3d(0, -4px, 0) scale(1.035); }
+  from { transform: translate3d(0, 10px, 0) scale(1.05); }
+  to { transform: translate3d(0, -3px, 0) scale(1.035); }
 }
 
-/* Keep the menu area visually close to the header on small screens. */
+/* Tighten mobile spacing so the menu section does not create a large dead zone. */
 @media (max-width: 980px) {
-  .section { padding: 88px 0 !important; }
-  .menuHead { margin-bottom: 22px !important; gap: 18px !important; }
-  .controls { top: 68px !important; }
-  .cuisineGrid { gap: 10px !important; }
-  .cuisineCard { min-height: 202px !important; }
-  .brand::before { width: 44px; height: 44px; }
+  main > section:nth-of-type(3),
+  main > section:nth-of-type(4),
+  main > section:nth-of-type(5),
+  main > section:nth-of-type(6),
+  main > section:nth-of-type(7),
+  main > section:nth-of-type(8) {
+    padding-top: 88px !important;
+    padding-bottom: 88px !important;
+  }
+
+  main > section:nth-of-type(5) > div > div:first-child {
+    margin-bottom: 22px !important;
+  }
+
+  main > section:nth-of-type(5) > div > div:nth-child(2) {
+    top: 68px !important;
+  }
+
+  button[aria-label="Raj Delight home"]::before {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 @media (max-width: 640px) {
-  .wrap { width: min(100% - 28px, 520px) !important; }
-  .navInner { min-height: 70px !important; gap: 14px !important; }
-  .brand { min-width: 0 !important; gap: 9px !important; }
-  .brand strong { font-size: 23px !important; }
-  .brand small { font-size: 7.5px !important; letter-spacing: .12em !important; }
-  .brand::before { width: 42px; height: 42px; }
-  button[aria-label="Open navigation"] { width: 86px !important; }
-  .heroContent { padding-top: 146px !important; padding-bottom: 88px !important; }
-  .hero h1 { font-size: clamp(46px, 13vw, 72px) !important; line-height: .9 !important; }
-  .heroLead { font-size: 15px !important; line-height: 1.65 !important; }
-  .heroActions { margin-top: 24px !important; }
-  .sectionHead { margin-bottom: 24px !important; }
-  .menuHead { grid-template-columns: 1fr !important; }
-  .callCard { min-width: 0 !important; }
-  .menuGrid { grid-template-columns: 1fr !important; }
-  .cuisineGrid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
-  .cuisineCard { min-height: 188px !important; padding: 13px !important; }
-  .cuisineCard strong { left: 13px !important; right: 13px !important; bottom: 34px !important; font-size: 22px !important; }
-  .cuisineCard span { left: 13px !important; bottom: 14px !important; }
-  .galleryGrid { grid-template-columns: 1fr 1fr !important; grid-auto-rows: 190px !important; }
-  .footerTop { grid-template-columns: 1fr !important; }
-  .footerLinks { justify-content: flex-start !important; }
+  button[aria-label="Raj Delight home"] {
+    min-width: 0 !important;
+    gap: 9px !important;
+  }
+
+  button[aria-label="Raj Delight home"]::before {
+    width: 42px;
+    height: 42px;
+  }
+
+  button[aria-label="Raj Delight home"] > span > strong {
+    font-size: 23px !important;
+  }
+
+  button[aria-label="Raj Delight home"] > span > small {
+    font-size: 7.5px !important;
+    letter-spacing: .12em !important;
+  }
+
+  button[aria-label="Open navigation"] {
+    width: 86px !important;
+  }
+
+  main > section:nth-of-type(3),
+  main > section:nth-of-type(4),
+  main > section:nth-of-type(5),
+  main > section:nth-of-type(6),
+  main > section:nth-of-type(7),
+  main > section:nth-of-type(8) {
+    padding-top: 76px !important;
+    padding-bottom: 76px !important;
+  }
+
+  main > section:nth-of-type(6) > div > div:last-child {
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 10px !important;
+  }
+
+  main > section:nth-of-type(6) > div > div:last-child > button {
+    min-height: 188px !important;
+    padding: 13px !important;
+  }
+
+  main > section:nth-of-type(6) > div > div:last-child > button strong {
+    left: 13px !important;
+    right: 13px !important;
+    bottom: 34px !important;
+    font-size: 22px !important;
+  }
+
+  main > section:nth-of-type(6) > div > div:last-child > button span {
+    left: 13px !important;
+    bottom: 14px !important;
+  }
+
+  footer .footerBrand::before {
+    width: 38px;
+    height: 38px;
+  }
 }
 
-/* Requested category imagery: only these seven cards are overridden. */
-.cuisineCard:nth-child(8) img,
-.cuisineCard:nth-child(11) img,
-.cuisineCard:nth-child(14) img,
-.cuisineCard:nth-child(15) img,
-.cuisineCard:nth-child(22) img,
-.cuisineCard:nth-child(32) img,
-.cuisineCard:nth-child(33) img {
+/* Only the seven requested category images are replaced. Category order is fixed by lib/menu.ts. */
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(8) > img,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(11) > img,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(14) > img,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(15) > img,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(22) > img,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(32) > img,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(33) > img {
   opacity: 0 !important;
 }
 
-.cuisineCard:nth-child(8)::before,
-.cuisineCard:nth-child(11)::before,
-.cuisineCard:nth-child(14)::before,
-.cuisineCard:nth-child(15)::before,
-.cuisineCard:nth-child(22)::before,
-.cuisineCard:nth-child(32)::before,
-.cuisineCard:nth-child(33)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(8)::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(11)::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(14)::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(15)::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(22)::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(32)::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(33)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -159,49 +219,47 @@ button[aria-label="Open navigation"]::after {
   background-position: center;
   background-size: cover;
   transform: scale(1.035);
-  transition: transform .6s cubic-bezier(.2,.7,.2,1), filter .45s ease;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
 }
 
-.cuisineCard:nth-child(8)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(8)::before {
   background-image: url('https://www.hall12canteen.in/images/dal-tadka.jpg');
 }
-.cuisineCard:nth-child(11)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(11)::before {
   background-image: url('https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/small_bowl_of_raita.jpg');
 }
-.cuisineCard:nth-child(14)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(14)::before {
   background-image: url('https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/3cc0f26aa020905ccf9586b62bbef4a4');
 }
-.cuisineCard:nth-child(15)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(15)::before {
   background-image: url('https://www.thestatesman.com/wp-content/uploads/2022/04/istockphoto-666595984-612x612.jpg');
 }
-.cuisineCard:nth-child(22)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(22)::before {
   background-image: url('https://s.lightorangebean.com/media/20241226190320/Quick-Vegan-Garlic-Bread_post5-750x471.jpg');
 }
-.cuisineCard:nth-child(32)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(32)::before {
   background-image: url('https://cmsimages.timesgroup.com/image-resizer/Bombaytimes?format=webp&s3_path=Bombaytimes%2Fposts%2F1752491050524%2Fassets%2FfeatureImages%2F1752492178206-1.png');
 }
-.cuisineCard:nth-child(33)::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(33)::before {
   background-image: url('https://images.healthshots.com/healthshots/en/uploads/2022/09/26103400/navratri-fasting-1600x900.jpg');
 }
 
-.cuisineCard:nth-child(8):hover::before,
-.cuisineCard:nth-child(11):hover::before,
-.cuisineCard:nth-child(14):hover::before,
-.cuisineCard:nth-child(15):hover::before,
-.cuisineCard:nth-child(22):hover::before,
-.cuisineCard:nth-child(32):hover::before,
-.cuisineCard:nth-child(33):hover::before {
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(8):hover::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(11):hover::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(14):hover::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(15):hover::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(22):hover::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(32):hover::before,
+main > section:nth-of-type(6) > div > div:last-child > button:nth-child(33):hover::before {
   transform: scale(1.075);
 }
 
-/* Respect reduced-motion settings without hiding content. */
 @media (prefers-reduced-motion: reduce) {
-  .site :global([data-reveal]),
-  .cuisineCard img,
-  .specialImage img,
-  .galleryCard img,
-  .galleryLarge img,
-  .aboutImage img {
+  [data-reveal],
+  main > section:nth-of-type(3) img,
+  main > section:nth-of-type(4) img,
+  main > section:nth-of-type(6) img,
+  main > section:nth-of-type(7) img {
     animation: none !important;
     transform: none !important;
   }
