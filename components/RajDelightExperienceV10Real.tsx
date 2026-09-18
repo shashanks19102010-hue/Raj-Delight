@@ -36,19 +36,19 @@ const foodImages: Record<string, string> = {
   lassi: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1000&q=84',
   tandoor: photos.tikka,
   curry: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=84',
-  dal: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=84',
+  dal: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=1200',
   rice: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=84',
   biryani: FALLBACK_FOOD,
-  raita: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=84',
+  raita: '/menu/raita.svg',
   salad: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=84',
   naan: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=1000&q=84',
-  paratha: 'https://images.unsplash.com/photo-1626776876729-bab4369f8a10?auto=format&fit=crop&w=1000&q=84',
-  papad: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1000&q=84',
+  paratha: '/menu/paratha.svg',
+  papad: '/menu/papad.svg',
   chinese: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1000&q=84',
   momos: photos.momos,
   sizzler: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=84',
   pizza: photos.pizza,
-  garlic: photos.pizza,
+  garlic: 'https://images.pexels.com/photos/1117862/pexels-photo-1117862.jpeg?auto=compress&cs=tinysrgb&w=1200',
   burger: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=84',
   pasta: photos.pasta,
   fries: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1000&q=84',
@@ -144,6 +144,25 @@ export function RajDelightExperienceV10() {
   }, [menuOpen, galleryOpen, orderOpen]);
 
   useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        document.documentElement.dataset.scrollDir = y > lastY ? 'down' : 'up';
+        document.documentElement.dataset.scrolled = y > 8 ? '1' : '0';
+        lastY = y;
+        ticking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
     const reveal = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add(styles.revealed); }), { threshold: 0.12 });
     reveal.forEach((node) => observer.observe(node));
@@ -169,7 +188,7 @@ export function RajDelightExperienceV10() {
     <div className={styles.progress} aria-hidden="true" />
     <header className={styles.nav}>
       <div className={`${styles.wrap} ${styles.navInner}`}>
-        <button className={styles.brand} onClick={() => go('home')} aria-label="Raj Delight home"><img src="/raj-delight-mark.svg" alt=""/><span><strong>Raj Delight</strong><small>Chandausi · Vegetarian Restaurant</small></span></button>
+        <button className={styles.brand} onClick={() => go('home')} aria-label="Raj Delight home"><img src="/grok_1789624913553.jpg" alt=""/><span><strong>Raj Delight</strong><small>Chandausi · Vegetarian Restaurant</small></span></button>
         <nav className={styles.links} aria-label="Primary navigation"><button onClick={() => go('about')}>About</button><button onClick={() => go('menu')}>Menu</button><button onClick={() => go('gallery')}>Gallery</button><button onClick={() => go('contact')}>Visit</button></nav>
         <div className={styles.navActions}><button className={styles.themeButton} onClick={() => setTheme((v) => v === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? 'Go dark' : 'Go light'} title={theme === 'light' ? 'Go dark' : 'Go light'}><Icon name={theme === 'light' ? 'moon' : 'sun'} /></button><a className={styles.callButton} href={PHONE}><Icon name="phone"/>Call</a><button className={styles.orderButton} onClick={() => setOrderOpen((v) => !v)} aria-expanded={orderOpen}>Order <Icon name="arrow"/></button></div>
         <button className={styles.mobileMenuButton} onClick={() => setMenuOpen(true)} aria-label="Open navigation">Menu</button>
