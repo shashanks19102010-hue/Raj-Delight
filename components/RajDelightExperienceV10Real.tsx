@@ -144,21 +144,16 @@ export function RajDelightExperienceV10() {
   }, [menuOpen, galleryOpen, orderOpen]);
 
   useEffect(() => {
-    let lastY = window.scrollY;
-    let ticking = false;
+    let last = window.scrollY;
     const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        const y = window.scrollY;
-        document.documentElement.dataset.scrollDir = y > lastY ? 'down' : 'up';
-        document.documentElement.dataset.scrolled = y > 8 ? '1' : '0';
-        lastY = y;
-        ticking = false;
-      });
+      const y = window.scrollY;
+      const dir = y > last + 2 ? 'down' : y < last - 2 ? 'up' : document.documentElement.dataset.scrollDir || 'up';
+      document.documentElement.dataset.scrollDir = dir;
+      document.documentElement.dataset.scrolled = y > 16 ? '1' : '0';
+      last = y;
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -188,7 +183,7 @@ export function RajDelightExperienceV10() {
     <div className={styles.progress} aria-hidden="true" />
     <header className={styles.nav}>
       <div className={`${styles.wrap} ${styles.navInner}`}>
-        <button className={styles.brand} onClick={() => go('home')} aria-label="Raj Delight home"><img src="/grok_1789624913553.jpg" alt=""/><span><strong>Raj Delight</strong><small>Chandausi · Vegetarian Restaurant</small></span></button>
+        <button className={styles.brand} onClick={() => go('home')} aria-label="Raj Delight home"><img src="/grok_1789624913553.jpg" alt="Raj Delight logo"/><span><strong>Raj Delight</strong><small>Chandausi · Vegetarian Restaurant</small></span></button>
         <nav className={styles.links} aria-label="Primary navigation"><button onClick={() => go('about')}>About</button><button onClick={() => go('menu')}>Menu</button><button onClick={() => go('gallery')}>Gallery</button><button onClick={() => go('contact')}>Visit</button></nav>
         <div className={styles.navActions}><button className={styles.themeButton} onClick={() => setTheme((v) => v === 'light' ? 'dark' : 'light')} aria-label={theme === 'light' ? 'Go dark' : 'Go light'} title={theme === 'light' ? 'Go dark' : 'Go light'}><Icon name={theme === 'light' ? 'moon' : 'sun'} /></button><a className={styles.callButton} href={PHONE}><Icon name="phone"/>Call</a><button className={styles.orderButton} onClick={() => setOrderOpen((v) => !v)} aria-expanded={orderOpen}>Order <Icon name="arrow"/></button></div>
         <button className={styles.mobileMenuButton} onClick={() => setMenuOpen(true)} aria-label="Open navigation">Menu</button>
@@ -226,7 +221,7 @@ export function RajDelightExperienceV10() {
 
     <section id="contact" className={`${styles.section} ${styles.contact}`} data-reveal><div className={`${styles.wrap} ${styles.contactGrid}`}><div><p className={styles.eyebrow}>06 · VISIT RAJ DELIGHT</p><h2>Make the next meal <em>a local plan.</em></h2><p>15, Lathi Bazar, Ward 05, Chandausi. Call, get directions or order online.</p><div className={styles.contactActions}><a className={styles.darkPrimary} href={MAPS} target="_blank" rel="noreferrer"><Icon name="map"/>Get directions</a><a className={styles.darkSecondary} href={PHONE}><Icon name="phone"/>Call now</a></div></div><div className={styles.contactCard}><div><small>PHONE</small><a href={PHONE}>+91 79831 48985</a></div><div><small>ADDRESS</small><strong>15, Lathi Bazar<br/>Ward 05, Chandausi</strong></div><div><small>HOURS</small><strong>Every day · 9:30 AM – 12:00 AM</strong></div><div><small>ORDER</small><p><a href={ZOMATO} target="_blank" rel="noreferrer">Zomato</a><a href={SWIGGY} target="_blank" rel="noreferrer">Swiggy</a></p></div></div></div></section>
 
-    <footer className={styles.footer}><div className={`${styles.wrap} ${styles.footerTop}`}><div className={styles.footerBrand}><img src="/raj-delight-mark.svg" alt=""/><span><strong>Raj Delight</strong><small>Chandausi</small></span></div><p>Food-led, locally rooted and designed to feel premium without feeling cold.</p><div className={styles.footerLinks}><a href={PHONE}>Call</a><a href={MAPS} target="_blank" rel="noreferrer">Directions</a><a href={ZOMATO} target="_blank" rel="noreferrer">Zomato</a><a href={SWIGGY} target="_blank" rel="noreferrer">Swiggy</a><a href={INSTAGRAM} target="_blank" rel="noreferrer">Instagram</a></div></div><div className={`${styles.wrap} ${styles.footerBottom}`}><span>© {new Date().getFullYear()} Raj Delight</span><span>15 Lathi Bazar · Chandausi</span></div></footer>
+    <footer className={styles.footer}><div className={`${styles.wrap} ${styles.footerTop}`}><div className={styles.footerBrand}><img src="/grok_1789624913553.jpg" alt="Raj Delight logo"/><span><strong>Raj Delight</strong><small>Chandausi</small></span></div><p>Food-led, locally rooted and designed to feel premium without feeling cold.</p><div className={styles.footerLinks}><a href={PHONE}>Call</a><a href={MAPS} target="_blank" rel="noreferrer">Directions</a><a href={ZOMATO} target="_blank" rel="noreferrer">Zomato</a><a href={SWIGGY} target="_blank" rel="noreferrer">Swiggy</a><a href={INSTAGRAM} target="_blank" rel="noreferrer">Instagram</a></div></div><div className={`${styles.wrap} ${styles.footerBottom}`}><span>© {new Date().getFullYear()} Raj Delight</span><span>15 Lathi Bazar · Chandausi</span></div></footer>
 
     <div className={styles.mobileDock}><a href={PHONE}><Icon name="phone"/><span>Call</span></a><button onClick={() => go('menu')}><Icon name="search"/><span>Menu</span></button><button onClick={() => setOrderOpen((v) => !v)}><Icon name="arrow"/><span>Order</span></button></div>
 
