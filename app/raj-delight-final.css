@@ -42,6 +42,11 @@ main > section:nth-of-type(8) {
   align-items: flex-end !important;
 }
 
+/* Repeatable reveal fallback for browsers without scroll-timeline support. */
+[data-reveal].revealed {
+  animation: rdSectionLift .78s cubic-bezier(.2,.72,.2,1) both !important;
+}
+
 /* The base component also has a one-time `.revealed` animation. Override its name here so
    supported scroll-timeline browsers use the safe transform-only animation instead. */
 @supports (animation-timeline: view()) {
@@ -56,7 +61,7 @@ main > section:nth-of-type(8) {
 }
 
 @keyframes rdSectionLift {
-  from { opacity: .28; transform: translateY(36px); }
+  from { opacity: 1; transform: translateY(24px) scale(.99); }
   to { opacity: 1; transform: none; }
 }
 
