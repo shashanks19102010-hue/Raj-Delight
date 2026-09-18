@@ -36,14 +36,14 @@ const foodImages: Record<string, string> = {
   lassi: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1000&q=84',
   tandoor: photos.tikka,
   curry: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=84',
-  dal: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  dal: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_300%2Ch_300%2Cc_fit/knzirng1nopuedldckm1',
   rice: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=84',
   biryani: FALLBACK_FOOD,
-  raita: '/menu/raita.svg',
+  raita: 'https://nutriscan.app/calories-nutrition/images/raitha-abb99.webp',
   salad: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=84',
   naan: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=1000&q=84',
-  paratha: '/menu/paratha.svg',
-  papad: '/menu/papad.svg',
+  paratha: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/3cc0f26aa020905ccf9586b62bbef4a4',
+  papad: 'https://b.zmtcdn.com/data/dish_photos/adc/8f0b58a3c22c9f5582c3d81f97515adc.jpeg',
   chinese: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1000&q=84',
   momos: photos.momos,
   sizzler: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=84',
@@ -58,8 +58,8 @@ const foodImages: Record<string, string> = {
   pav: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=1000&q=84',
   dessert: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=84',
   icecream: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=84',
-  snacks: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=84',
-  navratri: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=84',
+  snacks: 'https://static.wixstatic.com/media/2b9ea2_75440b2d1d2743ac87af610f48cf130b~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/SW_Image_3-copy.jpg',
+  navratri: 'https://www.ekirana.nl/media/wysiwyg/ekirana/blog-images/navratri-vrat-thali-v2.jpg',
   drinks: FALLBACK_DRINK,
 };
 
@@ -159,7 +159,10 @@ export function RajDelightExperienceV10() {
 
   useEffect(() => {
     const reveal = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
-    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add(styles.revealed); }), { threshold: 0.12 });
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add(styles.revealed);
+      else entry.target.classList.remove(styles.revealed);
+    }), { threshold: 0.12 });
     reveal.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
