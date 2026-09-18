@@ -55,6 +55,11 @@ main > section:nth-of-type(8) {
   }
 }
 
+@keyframes rdSectionLift {
+  from { opacity: .28; transform: translateY(36px); }
+  to { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     animation: none !important;
