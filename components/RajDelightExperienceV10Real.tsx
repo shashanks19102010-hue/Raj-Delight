@@ -36,14 +36,14 @@ const foodImages: Record<string, string> = {
   lassi: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=1000&q=84',
   tandoor: photos.tikka,
   curry: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=84',
-  dal: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_300%2Ch_300%2Cc_fit/knzirng1nopuedldckm1',
+  dal: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/FOOD_CATALOG/IMAGES/CMS/2025/11/15/4af3457c-30f5-48e5-b8ad-899027247e69_fe911541-88c3-4454-94e6-98593d80e6e8.jpg',
   rice: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=84',
   biryani: FALLBACK_FOOD,
-  raita: 'https://nutriscan.app/calories-nutrition/images/raitha-abb99.webp',
+  raita: 'https://c.ndtvimg.com/gws/ms/10-best-raitas-to-enjoy-with-biryani/assets/10.png',
   salad: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=84',
   naan: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=1000&q=84',
-  paratha: 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto/3cc0f26aa020905ccf9586b62bbef4a4',
-  papad: 'https://b.zmtcdn.com/data/dish_photos/adc/8f0b58a3c22c9f5582c3d81f97515adc.jpeg',
+  paratha: 'https://res.cloudinary.com/gagan/image/upload/v1753353239/n5iezfhv14s1srdpgjno.png',
+  papad: 'https://foodtraveletc.weebly.com/uploads/7/1/1/1/71119573/img-8236.jpg',
   chinese: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1000&q=84',
   momos: photos.momos,
   sizzler: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=84',
@@ -58,8 +58,8 @@ const foodImages: Record<string, string> = {
   pav: 'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=1000&q=84',
   dessert: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=84',
   icecream: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=84',
-  snacks: 'https://static.wixstatic.com/media/2b9ea2_75440b2d1d2743ac87af610f48cf130b~mv2.jpg/v1/fill/w_980%2Ch_653%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/SW_Image_3-copy.jpg',
-  navratri: 'https://www.ekirana.nl/media/wysiwyg/ekirana/blog-images/navratri-vrat-thali-v2.jpg',
+  snacks: 'https://gokulsweet.in/public/assets/assets_web/images/rg22.png',
+  navratri: 'https://media.indulgexpress.com/indulgexpress/import/2022/9/26/original/NavratriThaliatTuskers.jpg?auto=format%2Ccompress&fit=max&w=640'
   drinks: FALLBACK_DRINK,
 };
 
@@ -162,9 +162,29 @@ export function RajDelightExperienceV10() {
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
       if (entry.isIntersecting) entry.target.classList.add(styles.revealed);
       else entry.target.classList.remove(styles.revealed);
-    }), { threshold: 0.12 });
+    }), { threshold: 0.16, rootMargin: '0px 0px -7% 0px' });
     reveal.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+
+    let lastY = window.scrollY;
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(() => {
+        const y = window.scrollY;
+        document.documentElement.dataset.scrollDir = y > lastY + 2 ? 'down' : y < lastY - 2 ? 'up' : (document.documentElement.dataset.scrollDir || 'down');
+        document.documentElement.dataset.scrolled = y > 12 ? '1' : '0';
+        lastY = y;
+        raf = 0;
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   useEffect(() => {
