@@ -42,6 +42,7 @@ const aliases: Record<string, string> = {
   'butterscotch shake': 'Butter Scotch Shake',
   'black currant shake': 'Black Current Skake',
   'panner butter masala': 'Panner Butter Masala',
+  'paneer butter masala': 'Panner Butter Masala',
   'chinese sizzler': 'Chinesse Sizzler',
   'chole bhature kitty': 'Chole Bhature',
   'chole bhature kitty menu': 'Chole Bhature',
@@ -49,6 +50,18 @@ const aliases: Record<string, string> = {
   'fresh lime soda salt': 'Fresh Lime Soda (Sweet/Salt/Mix)',
   'fresh lime soda mix': 'Fresh Lime Soda (Sweet/Salt/Mix)',
   'singapore noodles': 'Singapori Noodles',
+  'paneer steam momos': 'Steem Paneer Momos',
+  'veg steam momos': 'Steem Veg Momos',
+  'pan fried chilli garlic momos': 'Pan Fryed Chilli Garlic Momos',
+  'stuffed garlic bread': 'Stuff Garlic Bread',
+  'rajasthani thali special': 'Rajsthani Thali (Special)',
+  'south indian platter': 'South Indian Platter (Raj Delight Special)',
+  'gulab jamun 1 pc': 'Gulab Jamun (1 Pcs)',
+  'gulab jamun with ice cream': 'Gulab Jamun (with ice cream)',
+  'white sponge 1 pc': 'White Sponge (1 Pcs)',
+  'butterscotch ice cream': 'Butter Scotch Ice Cream',
+  'black currant ice cream': 'Black Current Ice Cream',
+  'mushroom mutter masala': 'Mushroom Masala Mutter'
 };
 
 const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');

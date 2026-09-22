@@ -1,30 +1,133 @@
-/* Premium menu pricing layer - keeps the existing editorial system intact. */
+/* Premium menu pricing + lively interaction layer. */
+.site::before{
+  content:"";
+  position:fixed;
+  width:32rem;
+  height:32rem;
+  left:-14rem;
+  top:18%;
+  border-radius:50%;
+  background:radial-gradient(circle, color-mix(in srgb,var(--gold) 13%,transparent), transparent 68%);
+  filter:blur(8px);
+  pointer-events:none;
+  z-index:0;
+  opacity:.55;
+  animation:rdAmbientFloat 16s ease-in-out infinite alternate;
+}
+.site>*{position:relative;z-index:1}
 .menuPrice{
   flex:0 0 auto;
-  min-width:48px;
-  margin-left:14px;
+  min-width:54px;
+  margin-left:4px;
+  padding:5px 8px;
+  border:1px solid color-mix(in srgb,var(--gold) 32%,var(--line));
+  border-radius:999px;
+  background:color-mix(in srgb,var(--gold) 8%,var(--surface));
   color:var(--ink);
-  font:800 12px/1 var(--font-ui),Arial,sans-serif;
-  letter-spacing:.04em;
-  text-align:right;
-  transition:color .25s ease,transform .25s ease;
+  font:900 11px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.035em;
+  text-align:center;
+  box-shadow:0 5px 14px rgba(0,0,0,.045);
+  transition:color .28s ease,transform .28s ease,background .28s ease,border-color .28s ease,box-shadow .28s ease;
+  animation:rdPriceIn .55s cubic-bezier(.16,.84,.2,1) both;
 }
-.menuItem:hover .menuPrice{color:var(--gold);transform:translateX(-2px)}
+.menuItem:hover .menuPrice{
+  color:#1a120a;
+  background:var(--gold);
+  border-color:var(--gold);
+  transform:translateY(-1px) scale(1.035);
+  box-shadow:0 8px 20px rgba(183,137,63,.20);
+}
 .menuPriceMissing{
+  flex:0 0 auto;
+  min-width:42px;
+  margin-left:4px;
+  padding:5px 7px;
+  border:1px dashed var(--line);
+  border-radius:999px;
   color:var(--muted);
-  font:700 9px/1 var(--font-ui),Arial,sans-serif;
+  font:800 8px/1 var(--font-ui),Arial,sans-serif;
   letter-spacing:.08em;
   text-transform:uppercase;
 }
 .priceNote{
-  margin-top:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:9px;
   color:var(--muted);
   font:600 9px/1.5 var(--font-ui),Arial,sans-serif;
-  letter-spacing:.06em;
+  letter-spacing:.055em;
   text-transform:uppercase;
 }
-.menuItem{align-items:center!important}
+.priceNote::before{
+  content:"";
+  width:5px;
+  height:5px;
+  flex:none;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--gold) 10%,transparent);
+  animation:rdDotPulse 2.2s ease-in-out infinite;
+}
+.menuItem{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  min-width:0;
+  transition:transform .22s ease,padding-left .22s ease,background .22s ease;
+}
+.menuItem span{min-width:0;transition:color .22s ease}
+.menuItem i{
+  flex:1 1 auto!important;
+  width:auto!important;
+  height:1px!important;
+  min-width:18px;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 42%,var(--line)),color-mix(in srgb,var(--line) 65%,transparent));
+  border-radius:999px;
+  opacity:.45!important;
+  transition:opacity .22s ease,transform .22s ease;
+}
+.menuItem:hover{padding-left:4px}
+.menuItem:hover span{color:color-mix(in srgb,var(--ink) 78%,var(--gold))}
+.menuItem:hover i{opacity:.85!important;transform:scaleX(1.015)}
+.chapter{
+  position:relative;
+  overflow:hidden;
+}
+.chapter::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-40%;
+  width:22%;
+  height:100%;
+  transform:skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  pointer-events:none;
+  opacity:0;
+}
+.chapter:hover::after{opacity:1;animation:rdChapterShine 1.1s ease}
+.cuisineCard,.specialCard,.galleryCard,.galleryLarge{
+  overflow:hidden;
+}
+.cuisineCard::after,.specialCard::after,.galleryCard::after,.galleryLarge::after{
+  transition:opacity .25s ease;
+}
+@keyframes rdPriceIn{from{opacity:0;transform:translate3d(7px,0,0) scale(.92)}to{opacity:1;transform:none}}
+@keyframes rdDotPulse{0%,100%{transform:scale(.8);opacity:.65}50%{transform:scale(1.08);opacity:1}}
+@keyframes rdChapterShine{0%{left:-40%}100%{left:130%}}
+@keyframes rdAmbientFloat{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(12rem,5rem,0) scale(1.12)}}
 @media(max-width:640px){
-  .menuPrice{min-width:44px;font-size:11px}
+  .site::before{width:22rem;height:22rem;left:-12rem;top:24%;opacity:.38}
+  .menuPrice{min-width:48px;font-size:10px;padding:5px 7px}
+  .menuPriceMissing{min-width:38px;font-size:7px}
   .priceNote{font-size:8px}
+  .menuItem{gap:8px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .site::before,.menuPrice,.priceNote::before{animation:none!important}
+  .chapter:hover::after{animation:none!important;opacity:0}
+  .menuItem,.menuItem:hover{padding-left:0;transform:none!important}
+  .menuPrice,.menuItem:hover .menuPrice{transform:none!important}
 }
