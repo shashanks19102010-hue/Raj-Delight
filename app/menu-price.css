@@ -1,0 +1,30 @@
+/* Premium menu pricing layer - keeps the existing editorial system intact. */
+.menuPrice{
+  flex:0 0 auto;
+  min-width:48px;
+  margin-left:14px;
+  color:var(--ink);
+  font:800 12px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.04em;
+  text-align:right;
+  transition:color .25s ease,transform .25s ease;
+}
+.menuItem:hover .menuPrice{color:var(--gold);transform:translateX(-2px)}
+.menuPriceMissing{
+  color:var(--muted);
+  font:700 9px/1 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.priceNote{
+  margin-top:8px;
+  color:var(--muted);
+  font:600 9px/1.5 var(--font-ui),Arial,sans-serif;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.menuItem{align-items:center!important}
+@media(max-width:640px){
+  .menuPrice{min-width:44px;font-size:11px}
+  .priceNote{font-size:8px}
+}
