@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
+import './menu-price.css';
 import './raj-delight-theme.css';
 import './raj-delight-polish.css';
 import './raj-delight-final.css';
