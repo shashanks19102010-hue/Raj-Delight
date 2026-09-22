@@ -4,7 +4,7 @@ export type MenuCategory = {
 };
 
 // Public menu names currently visible on the restaurant's listing.
-// Exact live prices are not embedded because platform prices can change.
+// Prices are maintained separately in lib/menu-prices.ts from the supplied Raj Delight Menu 2024 PDF.
 export const menuCategories: MenuCategory[] = [
   { name: 'Warm & Cozy', items: ['Black Coffee', 'Black Tea', 'Coffee (hot)', 'Green Tea', 'Lemon Tea', 'Masala Tea (hot)', 'Tea (hot)'] },
   { name: 'Shake It Up', items: ['Butterscotch Shake', 'Black Currant Shake', 'Strawberry Shake', 'Chocolate Shake', 'Cold Coffee', 'Banana Shake', 'Belgian Chocolate Shake', 'Choco Brownie Shake', 'Choco Cookies Shake', 'Choco Fudge Shake', 'Choco Hazelnut Shake', 'Choco Muffin Shake', 'Choco Nutella Shake', 'Cold Coffee (with Ice Cream)', 'Kit Kat Shake', 'Mango Shake', 'Oreo Shake', 'Shikanji', 'Vanilla Shake'] },
