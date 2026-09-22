@@ -37,3 +37,33 @@
   .site :global([data-reveal]){opacity:1!important;transform:none!important}
   .cuisineCard img,.specialImage img,.galleryCard img,.galleryLarge img,.aboutImage img{transform:none!important;transition:none!important}
 }
+
+
+/* Live menu price rail — rendered with React so it is reliable on mobile and desktop. */
+.menuSummaryRow{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.priceLegend{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font:800 8px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.priceLegend span{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--gold);color:#1a120a;font:900 10px/1 var(--font-ui),Arial,sans-serif;box-shadow:0 5px 15px rgba(183,137,63,.22)}
+.menuItem{grid-template-columns:minmax(0,1fr) minmax(24px,1fr) auto;min-height:42px;gap:9px;padding:2px 0;transition:transform .22s ease,background .22s ease}
+.menuItem span{min-width:0;transition:color .22s ease,transform .22s ease}
+.menuItem i{width:auto;height:1px;background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 40%,var(--line)),color-mix(in srgb,var(--line) 55%,transparent));border-radius:999px;opacity:.52;transition:opacity .22s ease,transform .22s ease}
+.menuPrice{position:relative;min-width:54px;padding:6px 9px;border:1px solid color-mix(in srgb,var(--gold) 42%,var(--line));border-radius:999px;background:color-mix(in srgb,var(--gold) 9%,var(--surface));color:var(--ink);text-align:center;font:900 10px/1 var(--font-ui),Arial,sans-serif;letter-spacing:.025em;box-shadow:0 5px 16px rgba(0,0,0,.045);animation:menuPriceEnter .48s cubic-bezier(.16,.84,.2,1) both;transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}
+.menuPrice::after{content:"";position:absolute;inset:-1px;border-radius:inherit;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.5) 48%,transparent 72%);transform:translateX(-130%);opacity:0;pointer-events:none}
+.menuItem:hover{transform:translateX(3px)}
+.menuItem:hover span{color:color-mix(in srgb,var(--ink) 72%,var(--gold));transform:translateX(1px)}
+.menuItem:hover i{opacity:.9;transform:scaleX(1.03)}
+.menuItem:hover .menuPrice{transform:translateY(-1px) scale(1.04);background:var(--gold);border-color:var(--gold);color:#1a120a;box-shadow:0 9px 20px rgba(183,137,63,.20)}
+.menuItem:hover .menuPrice::after{opacity:1;animation:menuPriceShine .8s ease}
+@keyframes menuPriceEnter{from{opacity:0;transform:translateX(8px) scale(.9)}to{opacity:1;transform:none}}
+@keyframes menuPriceShine{from{transform:translateX(-130%)}to{transform:translateX(130%)}}
+@media (max-width:760px){
+  .menuSummaryRow{align-items:flex-start}
+  .priceLegend{font-size:7px}
+  .menuItem{grid-template-columns:minmax(0,1fr) minmax(15px,1fr) auto;min-height:43px;gap:7px}
+  .menuPrice{min-width:52px;padding:6px 8px;font-size:9px}
+}
+@media (prefers-reduced-motion:reduce){
+  .menuPrice{animation:none!important}
+  .menuItem,.menuItem:hover{transform:none!important}
+  .menuItem:hover .menuPrice{transform:none!important}
+  .menuItem:hover .menuPrice::after{animation:none!important}
+}
