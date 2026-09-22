@@ -61,7 +61,8 @@ const aliases: Record<string, string> = {
   'gulab jamun with ice cream': 'Gulab Jamun (with ice cream)',
   'white sponge 1 pc': 'White Sponge (1 Pcs)',
   'butterscotch ice cream': 'Butter Scotch Ice Cream',
-  'black currant ice cream': 'Black Current Ice Cream'
+  'black currant ice cream': 'Black Current Ice Cream',
+  'moong dal chila': 'Mong Daal Chila'
 };
 
 const normalize = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
