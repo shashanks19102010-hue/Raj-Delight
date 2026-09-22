@@ -59,7 +59,7 @@ const foodImages: Record<string, string> = {
   dessert: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=84',
   icecream: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=1000&q=84',
   snacks: 'https://gokulsweet.in/public/assets/assets_web/images/rg22.png',
-  navratri: 'https://media.indulgexpress.com/indulgexpress/import/2022/9/26/original/NavratriThaliatTuskers.jpg?auto=format%2Ccompress&fit=max&w=640'
+  navratri: 'https://media.indulgexpress.com/indulgexpress/import/2022/9/26/original/NavratriThaliatTuskers.jpg?auto=format%2Ccompress&fit=max&w=640',
   drinks: FALLBACK_DRINK,
 };
 
