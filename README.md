@@ -14,7 +14,7 @@ Premium, responsive restaurant website for Raj Delight, Chandausi.
 - Reduced-motion support and accessible labels
 
 ## Data note
-The public ordering page exposes menu names but currently gates individual dish prices behind login, so the site does not invent item prices. Public listing-level spend information is shown where available.
+The menu now shows prices from the supplied Raj Delight Menu 2024 PDF. Website-only items whose price is not present in that PDF are marked Ask rather than inferred.
 
 ## Run locally
 ```bash
