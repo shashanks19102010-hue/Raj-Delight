@@ -205,3 +205,7 @@
   .menuStamp::before{animation:none!important}
   .menuSection .chapter:hover{transform:none!important}
 }
+
+/* QR deep-link anchor alignment */
+#menu{scroll-margin-top:92px}
+@media(max-width:760px){#menu{scroll-margin-top:74px}}
