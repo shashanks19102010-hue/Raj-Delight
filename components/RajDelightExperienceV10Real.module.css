@@ -209,3 +209,78 @@
 /* QR deep-link anchor alignment */
 #menu{scroll-margin-top:92px}
 @media(max-width:760px){#menu{scroll-margin-top:74px}}
+
+
+/* Logo-first opening experience shared with the menu microsite. */
+.splash{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:14px;
+  background:
+    radial-gradient(circle at 50% 44%,color-mix(in srgb,var(--gold) 12%,transparent),transparent 30%),
+    var(--bg);
+  transition:opacity .65s ease,visibility .65s ease,transform .8s cubic-bezier(.16,.8,.2,1);
+}
+.splashVisible{opacity:1;visibility:visible;transform:none}
+.splashHidden{opacity:0;visibility:hidden;transform:scale(1.018);pointer-events:none}
+.splashGlow{
+  position:absolute;
+  width:min(430px,78vw);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--gold) 13%,transparent),transparent 68%);
+  filter:blur(10px);
+  animation:splashGlow 2.2s ease-in-out infinite;
+}
+.splashSeal{
+  position:relative;
+  z-index:1;
+  width:144px;height:144px;
+  padding:8px;
+  border-radius:50%;
+  background:var(--surface);
+  border:1px solid color-mix(in srgb,var(--gold) 58%,var(--line));
+  box-shadow:0 0 0 8px color-mix(in srgb,var(--gold) 7%,transparent),0 28px 90px rgba(40,25,9,.16);
+  animation:splashSealIn .85s cubic-bezier(.16,.84,.2,1) both;
+}
+.splashSeal img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.splashRule{
+  position:relative;z-index:1;
+  width:112px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.splash p,.splash span{position:relative;z-index:1;margin:0;text-align:center}
+.splash p{
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:31px;
+  letter-spacing:.09em;
+}
+.splash span{
+  color:var(--muted);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.23em;
+  text-transform:uppercase;
+}
+@keyframes splashSealIn{
+  from{opacity:0;transform:scale(.72) rotate(-7deg)}
+  to{opacity:1;transform:none}
+}
+@keyframes splashGlow{
+  0%,100%{transform:scale(.95);opacity:.65}
+  50%{transform:scale(1.05);opacity:1}
+}
+@media(max-width:600px){
+  .splashSeal{width:122px;height:122px}
+  .splash p{font-size:27px}
+  .splash span{font-size:8px;letter-spacing:.2em}
+}
+@media(prefers-reduced-motion:reduce){
+  .splashGlow,.splashSeal{animation:none!important}
+  .splash{transition:none}
+}
