@@ -123,6 +123,18 @@ export function RajDelightExperienceV10() {
   const [category, setCategory] = useState('All');
   const [galleryOpen, setGalleryOpen] = useState<number | null>(null);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [splash, setSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setSplash(false), 1900);
+    document.body.style.overflow = 'hidden';
+    const unlock = window.setTimeout(() => { document.body.style.overflow = ''; }, 1980);
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(unlock);
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   useEffect(() => {
     const saved = window.localStorage.getItem('raj-delight-theme-v10') || window.localStorage.getItem('raj-delight-theme-v9') || window.localStorage.getItem('raj-delight-theme');
@@ -203,7 +215,15 @@ export function RajDelightExperienceV10() {
   const currentPhoto = galleryOpen === null ? gallery[0] : gallery[galleryOpen];
   const go = (id: string) => { setMenuOpen(false); setOrderOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); };
 
-  return <main className={styles.site}>
+  return <>
+    <div className={styles.splash + " " + (splash ? styles.splashVisible : styles.splashHidden)} aria-hidden={!splash}>
+      <div className={styles.splashGlow} />
+      <div className={styles.splashSeal}><img src="/grok_1789624913553.jpg" alt="" /></div>
+      <div className={styles.splashRule} />
+      <p>RAJ DELIGHT</p>
+      <span>CHANDAUSI · VEGETARIAN RESTAURANT</span>
+    </div>
+    <main className={styles.site}>
     <div className={styles.progress} aria-hidden="true" />
     <header className={styles.nav}>
       <div className={`${styles.wrap} ${styles.navInner}`}>
