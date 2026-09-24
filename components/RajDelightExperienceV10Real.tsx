@@ -270,5 +270,6 @@ export function RajDelightExperienceV10() {
     <div className={styles.mobileDock}><a href={PHONE}><Icon name="phone"/><span>Call</span></a><button onClick={() => go('menu')}><Icon name="search"/><span>Menu</span></button><button onClick={() => setOrderOpen((v) => !v)}><Icon name="arrow"/><span>Order</span></button></div>
 
     {galleryOpen !== null && <div className={styles.lightbox} role="dialog" aria-modal="true" aria-label="Gallery photo" onClick={() => setGalleryOpen(null)}><button className={styles.close} onClick={() => setGalleryOpen(null)} aria-label="Close gallery"><Icon name="close"/></button><button className={styles.prev} onClick={(e) => { e.stopPropagation(); setGalleryOpen((galleryOpen + gallery.length - 1) % gallery.length); }} aria-label="Previous photo">‹</button><div className={styles.lightboxMedia} onClick={(e) => e.stopPropagation()}><SmartImage src={currentPhoto.src} fallback={currentPhoto.fallback} alt={currentPhoto.alt} /><span>{currentPhoto.label}</span></div><button className={styles.next} onClick={(e) => { e.stopPropagation(); setGalleryOpen((galleryOpen + 1) % gallery.length); }} aria-label="Next photo">›</button></div>}
-  </main>;
+  </main>
+  </>;
 }
